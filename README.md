@@ -1,4 +1,4 @@
-PAC
+Conference Planner
 ===
 
-Repository for all PAC-related projects
+Repository for the PAC Conference Planner project

@@ -28,5 +28,17 @@
   </build>
 
   <dependencies>
+	  <dependency>
+	  	<groupId>com.prodyna.pmu.cpa</groupId>
+	  	<artifactId>cpa-ejb-impl</artifactId>
+	  	<version>0.0.1-SNAPSHOT</version>
+	  	<type>ejb</type>
+	  </dependency>
+	  <dependency>
+	  	<groupId>com.prodyna.pmu.cpa</groupId>
+	  	<artifactId>cpa-rest-impl</artifactId>
+	  	<version>0.0.1-SNAPSHOT</version>
+	  	<type>war</type>
+	  </dependency>
   </dependencies>
 </project>

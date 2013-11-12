@@ -9,27 +9,26 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.UpdateOperations;
 
-import com.prodyna.pmu.cpa.common.entity.Conference;
+import com.prodyna.pmu.cpa.Conference;
 import com.prodyna.pmu.cpa.ejb.ConferenceService;
-import com.prodyna.pmu.cpa.ejb.entity.ConferenceImpl;
+import com.prodyna.pmu.cpa.ejb.entity.ConferenceEntity;
 
 /**
  * TODO Comment on type 
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Local @Stateless
-public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conference, ConferenceImpl> 
+@Stateless
+public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conference, ConferenceEntity> 
 		implements ConferenceService {
 
-	private ConferenceImpl create(String name, String description, Date beginDate, Date endDate) {
-		ConferenceImpl result = new ConferenceImpl();
+	private ConferenceEntity create(String name, String description, Date beginDate, Date endDate) {
+		ConferenceEntity result = new ConferenceEntity();
 		result.setName(name);
 		result.setDescription(description);
 		result.setBeginDate(beginDate);
@@ -65,7 +64,7 @@ public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conferen
 	 * {@inheritDoc}
 	 */
   @Override
-  protected Class<Conference> getEntityInterface() {
+  protected Class<Conference> getTransferClass() {
 	  return Conference.class;
   }
 
@@ -73,15 +72,15 @@ public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conferen
 	 * {@inheritDoc}
 	 */
   @Override
-  protected Class<ConferenceImpl> getEntityClass() {
-	  return ConferenceImpl.class;
+  protected Class<ConferenceEntity> getEntityClass() {
+	  return ConferenceEntity.class;
   }
   
 	/**
 	 * {@inheritDoc}
 	 */
   @Override
-  protected void prepare(UpdateOperations<ConferenceImpl> updateOperations, Conference object) {
+  protected void prepare(UpdateOperations<ConferenceEntity> updateOperations, Conference object) {
 		updateOperations
     		.set("name", object.getName())
     		.set("desciption", object.getDescription())

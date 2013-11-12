@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.common.entity.BaseEntity;
+import com.prodyna.pmu.cpa.HasObjectId;
 
 /**
  * Base interface for all RESTful CRUD services within this application.
@@ -22,7 +22,7 @@ import com.prodyna.pmu.cpa.common.entity.BaseEntity;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  * @param <T> The entity type that is serviced by the implementing class.
  */
-public interface EntityService<T extends BaseEntity> {
+public interface EntityService<T extends HasObjectId> {
 
 	/**
 	 * Extension to the base service, allowing the listing of object.
@@ -30,7 +30,7 @@ public interface EntityService<T extends BaseEntity> {
 	 * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
 	 * @param <T> The entity type that is serviced by the implementing class.
 	 */
-	public interface Listable<T extends BaseEntity> extends EntityService<T> {
+	public interface Listable<T extends HasObjectId> extends EntityService<T> {
 
 		/**
 		 * Returns a list of all available object.

@@ -32,6 +32,11 @@
 			<version>2.11.3</version>
 		</dependency>
 		<dependency>
+			<groupId>ma.glasnost.orika</groupId>
+			<artifactId>orika-core</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+		<dependency>
 			<groupId>com.prodyna.pmu.cpa</groupId>
 			<artifactId>cpa-ejb</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

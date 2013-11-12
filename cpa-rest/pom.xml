@@ -11,4 +11,15 @@
   
   <name>CPA REST API</name>
   <description>REST API for the Conference Planner (PAC) project</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.jboss.resteasy</groupId>
+  		<artifactId>jaxrs-api</artifactId>
+  		<version>3.0.4.Final</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.prodyna.pmu.cpa</groupId>
+  		<artifactId>cpa-common</artifactId>
+  	</dependency>
+  </dependencies>
 </project>

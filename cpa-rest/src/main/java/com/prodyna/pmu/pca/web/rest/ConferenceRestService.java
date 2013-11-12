@@ -4,8 +4,6 @@
  */
 package com.prodyna.pmu.pca.web.rest;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,21 +14,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.common.entity.Conference;
-import com.prodyna.pmu.cpa.ejb.ConferenceService;
+import com.prodyna.pmu.cpa.Conference;
 
 /**
  * TODO Comment on type 
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Path("conference") @RequestScoped
-public class RestConferenceService {
+@Path("conference")
+public interface ConferenceRestService {
 
-	/** The service bean to use. */
-	@Inject
-	private ConferenceService service;
-	
 	/**
 	 * Returns a list of all available object.
 	 * <p>
@@ -39,9 +32,7 @@ public class RestConferenceService {
 	 * @return a list of objects, possibly empty.
 	 */
 	@GET @Produces(MediaType.APPLICATION_JSON)
-	public Iterable<Conference> list() {
-		return service.list();
-	}
+	public Iterable<Conference> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -50,9 +41,7 @@ public class RestConferenceService {
 	 * @return the corresponding object.
 	 */
 	@GET @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Conference read(@PathParam("objectId") String objectId) {
-		return service.read(objectId);
-	}
+	public Conference read(@PathParam("objectId") String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -61,9 +50,7 @@ public class RestConferenceService {
 	 * @return the stored object.
 	 */
 	@POST @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Conference create(Conference object) {
-		return service.create(object);
-	}
+	public Conference create(Conference object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -73,9 +60,7 @@ public class RestConferenceService {
 	 * @return the updated object.
 	 */
 	@PUT @Path("{objectId}") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Conference update(@PathParam("objectId") String objectId, Conference object) {
-		return service.update(objectId, object);
-	}
+	public Conference update(@PathParam("objectId") String objectId, Conference object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -84,7 +69,5 @@ public class RestConferenceService {
 	 * @return the deleted object.
 	 */
 	@DELETE @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Conference delete(@PathParam("objectId") String objectId) {
-		return service.delete(objectId);
-	}
+	public Conference delete(@PathParam("objectId") String objectId);
 }

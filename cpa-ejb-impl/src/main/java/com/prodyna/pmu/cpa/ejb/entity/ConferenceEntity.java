@@ -6,11 +6,12 @@ package com.prodyna.pmu.cpa.ejb.entity;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
-import com.prodyna.pmu.cpa.common.entity.Conference;
+import com.prodyna.pmu.cpa.Conference;
 
 /**
  * Morphia-specific implementation of the {@link Conference} entity interface.
@@ -18,10 +19,10 @@ import com.prodyna.pmu.cpa.common.entity.Conference;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 @Entity(value="conference", noClassnameStored=true)
-public class ConferenceImpl implements Conference {
+public class ConferenceEntity {
 
 	/** The unique object identifier. */
-	private @Id String id;
+	private @Id ObjectId id;
 	
 	/** The name of the conference. */
 	private String name;
@@ -35,42 +36,22 @@ public class ConferenceImpl implements Conference {
 	/** The end date of the conference. */
 	private Date endDate;
 	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getObjectId() {
+	public ObjectId getId() {
 		return id;
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
+	
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public String getDescription() {
 		return description;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public Date getBeginDate() {
 		return beginDate;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -78,10 +59,10 @@ public class ConferenceImpl implements Conference {
 	/**
 	 * Sets the objectId.
 	 *
-	 * @param objectId the objectId to set
+	 * @param id the id to set
 	 */
-	public void setObjectId(String objectId) {
-		this.id = objectId;
+	public void setId(ObjectId id) {
+		this.id = id;
 	}
 
 	/**
@@ -126,7 +107,7 @@ public class ConferenceImpl implements Conference {
   @Override
   public int hashCode() {
 	  return Objects.hashCode(
-	  		getObjectId(),
+	  		getId(),
 	  		getName(),
 	  		getDescription(),
 	  		getBeginDate(),
@@ -141,10 +122,10 @@ public class ConferenceImpl implements Conference {
   public boolean equals(Object obj) {
   	if (obj == null) return false;
   	if (this == obj) return true;
-  	if (obj instanceof Conference) return false;
-  	Conference that = (Conference) obj;
+  	if (obj instanceof ConferenceEntity) return false;
+  	ConferenceEntity that = (ConferenceEntity) obj;
 	  return (
-	  		Objects.equal(this.getObjectId(), that.getObjectId()) &&
+	  		Objects.equal(this.getId(), that.getId()) &&
 	  		Objects.equal(this.getName(), that.getName()) &&
 	  		Objects.equal(this.getDescription(), that.getDescription()) &&
 	  		Objects.equal(this.getBeginDate(), that.getBeginDate()) &&

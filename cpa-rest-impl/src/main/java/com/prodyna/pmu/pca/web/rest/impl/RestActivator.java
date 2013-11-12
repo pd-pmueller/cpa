@@ -2,7 +2,7 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.pca.web.rest;
+package com.prodyna.pmu.pca.web.rest.impl;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

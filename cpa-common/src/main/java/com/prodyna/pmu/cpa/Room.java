@@ -2,25 +2,24 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.cpa.ejb.entity;
+package com.prodyna.pmu.cpa;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
+import java.io.Serializable;
 
 import com.google.common.base.Objects;
-import com.prodyna.pmu.cpa.common.entity.Room;
 
 /**
- * TODO Comment on type 
+ * Serializable class that describes a single room.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Entity(value="room", noClassnameStored=true)
-public class RoomImpl implements Room {
+public class Room implements HasObjectId, HasName, Serializable {
+
+	/** The {@code serialVersionUID}. */
+  private static final long serialVersionUID = -6725037517737486160L;
 
 	/** The unique object identifier. */
-	@Id
-	private String id;
+	private String objectId;
 
 	/** The name of the room. */
 	private String name;
@@ -33,7 +32,7 @@ public class RoomImpl implements Room {
 	 */
 	@Override
 	public String getObjectId() {
-		return id;
+		return objectId;
 	}
 
 	/**
@@ -43,37 +42,38 @@ public class RoomImpl implements Room {
 	public String getName() {
 		return name;
 	}
-
+	
 	/**
-	 * {@inheritDoc}
+	 * Returns the maximum capacity of this room.
+	 *
+	 * @return the capacity as number of persons.
 	 */
-	@Override
 	public Integer getCapacity() {
 		return capacity;
 	}
 
 	/**
-	 * Sets the objectId.
+	 * Sets the unique object identifier for this object.
 	 *
-	 * @param objectId the objectId to set
+	 * @param objectId The identifier to set.
 	 */
 	public void setObjectId(String objectId) {
-		this.id = objectId;
+		this.objectId = objectId;
 	}
 
 	/**
-	 * Sets the name.
+	 * Sets the name for this object.
 	 *
-	 * @param name the name to set
+	 * @param name the name to set.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Sets the capacity.
+	 * Sets the capacity for this room.
 	 *
-	 * @param capacity the capacity to set
+	 * @param capacity the capacity to set.
 	 */
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;

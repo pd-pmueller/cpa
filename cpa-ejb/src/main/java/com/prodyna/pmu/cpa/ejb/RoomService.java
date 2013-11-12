@@ -4,7 +4,7 @@
  */
 package com.prodyna.pmu.cpa.ejb;
 
-import com.prodyna.pmu.cpa.common.entity.Room;
+import com.prodyna.pmu.cpa.Room;
 
 /**
  * TODO Comment on type 

@@ -6,6 +6,8 @@ package com.prodyna.pmu.cpa.ejb.impl;
 
 import javax.inject.Inject;
 
+import ma.glasnost.orika.MapperFacade;
+
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -17,7 +19,7 @@ import org.slf4j.Logger;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.prodyna.pmu.cpa.common.entity.BaseEntity;
+import com.prodyna.pmu.cpa.HasObjectId;
 import com.prodyna.pmu.cpa.ejb.EntityService;
 
 /**
@@ -29,7 +31,7 @@ import com.prodyna.pmu.cpa.ejb.EntityService;
  * @param <T> The entity interface which is serviced.
  * @param <I> The entity implementation to use.
  */
-public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> implements EntityService<T> {
+public abstract class AbstractServiceImpl<T extends HasObjectId, I> implements EntityService<T> {
 
 	/**
 	 * Abstract implementation of the {@link com.prodyna.pmu.cpa.ejb.EntityService.Listable} interface.
@@ -37,7 +39,7 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
    * @param <T> The entity interface which is serviced.
    * @param <I> The entity implementation to use.
 	 */
-	public static abstract class Listable<T extends BaseEntity, I extends T> extends AbstractServiceImpl<T, I>
+	public static abstract class Listable<T extends HasObjectId, I> extends AbstractServiceImpl<T, I>
 			implements EntityService.Listable<T> {
 		
 		/** The default order. */
@@ -57,7 +59,7 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
 	  			.fetch();
 		  return Iterables.transform(result, new Function<I, T>() {
 		  	@Override public T apply(I input) {
-		  	  return input;
+		  	  return map(input);
 		  	}
 		  });
 	  }
@@ -125,13 +127,17 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
 	/** The underlying datastore object. */
 	@Inject
 	private Datastore datastore;
+	
+	/** The object mapper facade to use. */
+	@Inject
+	private MapperFacade mapper;
 
 	/**
 	 * {@inheritDoc}
 	 */
   @Override
   public T read(String objectId) {
-  	return queryById(objectId).get();
+  	return map(queryById(objectId).get());
   }
 
 	/**
@@ -154,10 +160,10 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
   	UpdateOperations<I> updateOperations = datastore.createUpdateOperations(getEntityClass());
   	prepare(updateOperations, object);
   	// Execute
-  	return datastore.findAndModify(
+  	return map(datastore.findAndModify(
   			queryById(objectId),
   			updateOperations
-  	);
+  	));
   }
 
 	/**
@@ -165,7 +171,7 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
 	 */
   @Override
   public T delete(String objectId) {
-	  return datastore.findAndDelete(queryById(objectId));
+	  return map(datastore.findAndDelete(queryById(objectId)));
   }
 
 	/**
@@ -189,11 +195,11 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
 	}
 	
 	/**
-	 * Returns the interface of the serviced entity.
+	 * Returns the class of the serviced transferable object.
 	 *
 	 * @return an interface class.
 	 */
-	protected abstract Class<T> getEntityInterface();
+	protected abstract Class<T> getTransferClass();
 	
 	/**
 	 * Returns the implementation class of the serviced entity.
@@ -211,4 +217,12 @@ public abstract class AbstractServiceImpl<T extends BaseEntity, I extends T> imp
 	protected Query<I> queryById(String objectId) {
   	return datastore.createQuery(getEntityClass()).field("id").equal(new ObjectId(objectId));
   }
+	
+	protected I map(T object) {
+		return mapper.map(object, getEntityClass());
+	}
+	
+	protected T map(I object) {
+		return mapper.map(object, getTransferClass());
+	}
 }

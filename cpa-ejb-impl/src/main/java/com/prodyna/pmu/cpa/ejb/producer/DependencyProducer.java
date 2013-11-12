@@ -9,6 +9,14 @@ import java.net.UnknownHostException;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
+import ma.glasnost.orika.CustomConverter;
+import ma.glasnost.orika.MapperFacade;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.converter.ConverterFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.metadata.Type;
+
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.slf4j.Logger;
@@ -17,6 +25,10 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Throwables;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.prodyna.pmu.cpa.Conference;
+import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.ejb.entity.ConferenceEntity;
+import com.prodyna.pmu.cpa.ejb.entity.RoomEntity;
 
 /**
  * This class produces all dependencies for the project.
@@ -65,6 +77,34 @@ public class DependencyProducer {
 		catch (UnknownHostException e) {
 			throw Throwables.propagate(e);
 		}
+	}
+	
+	/**
+	 * Produces and returns a {@code Orika} {@code MapperFacade} instance.
+	 *
+	 * @return a {@code MapperFacade} instance.
+	 */
+	@Produces
+	public MapperFacade getMapperFacade() {
+		MapperFactory factory = new DefaultMapperFactory.Builder().build();
+		// Mappable classes
+		factory.registerClassMap(
+				factory.classMap(Conference.class, ConferenceEntity.class)
+					.field("objectId", "id").toClassMap()
+		);
+		factory.registerClassMap(
+				factory.classMap(Room.class, RoomEntity.class)
+					.field("objectId", "id").toClassMap()
+		);
+		// Converters
+		ConverterFactory converters = factory.getConverterFactory();
+		converters.registerConverter(new CustomConverter<String, ObjectId>() {
+			@Override public ObjectId convert(String source, Type<? extends ObjectId> destinationClass) {
+	      return new ObjectId(source);
+      }
+		});
+		// Done
+		return factory.getMapperFacade();
 	}
 	
 	/**

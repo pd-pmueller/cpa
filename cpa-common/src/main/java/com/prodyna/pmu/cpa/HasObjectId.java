@@ -2,17 +2,17 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.cpa.common.entity;
+package com.prodyna.pmu.cpa;
 
 /**
- * Base interface for entities.
+ * Interface for an object that holds a unique object identifier.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-public interface BaseEntity {
+public interface HasObjectId {
 
 	/**
-	 * Returns the unique object identifier for this speaker.
+	 * Returns the unique object identifier for this object.
 	 *
 	 * @return a unique object identifier.
 	 */

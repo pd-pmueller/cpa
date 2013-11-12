@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="conference-service">
+        <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <dependent-module archiveName="conference-common.jar" deploy-path="/" handle="module:/resource/conference-common/conference-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="conference-service-api.jar" deploy-path="/" handle="module:/resource/conference-service-api/conference-service-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/conference-service/target/classes"/>
+    </wb-module>
+</project-modules>

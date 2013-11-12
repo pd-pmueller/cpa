@@ -1,4 +1,4 @@
-pac
+Conference
 ===
 
-Repository for all PAC-related projects
+Repository for all conference-related projects (PAC)

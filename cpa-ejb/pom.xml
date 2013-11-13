@@ -8,6 +8,7 @@
   </parent>
   
   <artifactId>cpa-ejb</artifactId>
+  <packaging>pom</packaging>
 
   <name>CPA EJB API</name>
   <description>EJB API for the Conference Planner (PAC) application</description>

@@ -14,7 +14,7 @@ import com.google.common.base.Objects;
 import com.prodyna.pmu.cpa.Conference;
 
 /**
- * Morphia-specific implementation of the {@link Conference} entity interface.
+ * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Conference} entity.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */

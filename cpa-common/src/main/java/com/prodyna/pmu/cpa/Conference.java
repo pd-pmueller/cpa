@@ -20,7 +20,7 @@ public class Conference implements HasObjectId, HasName, Serializable {
   private static final long serialVersionUID = -6962966647288883653L;
 
 	/** The unique object identifier. */
-	private String id;
+	private String objectId;
 	
 	/** The name of the conference. */
 	private String name;
@@ -35,24 +35,24 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	private Date endDate;
 	
 	/**
-	 * Constructs a new, empty {@code Transferable} object.
+	 * Constructs a new, empty {@code Conference} object.
 	 */
 	public Conference() {
 		super();
 	}
 	
 	/**
-	 * Constructs a new {@code Transferable} object.
+	 * Constructs a new {@code Conference} object.
 	 *
-	 * @param id The unique object identifier to set.
+	 * @param objectId The unique object identifier to set.
 	 * @param name The name to set.
 	 * @param description The description to set.
 	 * @param beginDate The begin date to set.
 	 * @param endDate The end date to set.
 	 */
-  public Conference(String id, String name, String description, Date beginDate, Date endDate) {
+  public Conference(String objectId, String name, String description, Date beginDate, Date endDate) {
     this();
-  	this.id = id;
+  	this.objectId = objectId;
     this.name = name;
     this.description = description;
     this.beginDate = beginDate;
@@ -64,7 +64,7 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	 */
 	@Override
 	public String getObjectId() {
-		return id;
+		return objectId;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	 * @param objectId the identifier to set.
 	 */
 	public void setObjectId(String objectId) {
-		this.id = objectId;
+		this.objectId = objectId;
 	}
 
 	/**

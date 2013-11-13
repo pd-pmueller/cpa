@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import org.mongodb.morphia.Datastore;
@@ -19,11 +20,11 @@ import com.prodyna.pmu.cpa.ejb.ConferenceService;
 import com.prodyna.pmu.cpa.ejb.entity.ConferenceEntity;
 
 /**
- * TODO Comment on type 
+ * EJB service bean implementation of the {@link ConferenceService} interface.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Stateless
+@Local @Stateless
 public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conference, ConferenceEntity> 
 		implements ConferenceService {
 
@@ -83,7 +84,7 @@ public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conferen
   protected void prepare(UpdateOperations<ConferenceEntity> updateOperations, Conference object) {
 		updateOperations
     		.set("name", object.getName())
-    		.set("desciption", object.getDescription())
+    		.set("description", object.getDescription())
     		.set("beginDate", object.getBeginDate())
     		.set("endDate", object.getEndDate());
   }

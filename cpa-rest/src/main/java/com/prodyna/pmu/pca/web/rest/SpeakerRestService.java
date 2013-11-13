@@ -14,15 +14,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.Conference;
+import com.prodyna.pmu.cpa.Speaker;
 
 /**
- * Interface and JAX-RS definition for the {@code Conference} CRUD REST service.
+ * Interface and JAX-RS definition for the {@code Speaker} CRUD REST service.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Path("conference")
-public interface ConferenceRestService extends RestService<Conference> {
+@Path("speaker")
+public interface SpeakerRestService extends RestService<Speaker> {
 
 	/**
 	 * Returns a list of all available object.
@@ -32,7 +32,7 @@ public interface ConferenceRestService extends RestService<Conference> {
 	 * @return a list of objects, possibly empty.
 	 */
 	@GET @Produces(MediaType.APPLICATION_JSON)
-	public Iterable<Conference> list();
+	public Iterable<Speaker> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -41,7 +41,7 @@ public interface ConferenceRestService extends RestService<Conference> {
 	 * @return the corresponding object.
 	 */
 	@GET @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Conference read(@PathParam("objectId") String objectId);
+	public Speaker read(@PathParam("objectId") String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -50,7 +50,7 @@ public interface ConferenceRestService extends RestService<Conference> {
 	 * @return the stored object.
 	 */
 	@POST @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Conference create(Conference object);
+	public Speaker create(Speaker object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -60,7 +60,7 @@ public interface ConferenceRestService extends RestService<Conference> {
 	 * @return the updated object.
 	 */
 	@PUT @Path("{objectId}") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Conference update(@PathParam("objectId") String objectId, Conference object);
+	public Speaker update(@PathParam("objectId") String objectId, Speaker object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -69,5 +69,5 @@ public interface ConferenceRestService extends RestService<Conference> {
 	 * @return the deleted object.
 	 */
 	@DELETE @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Conference delete(@PathParam("objectId") String objectId);
+	public Speaker delete(@PathParam("objectId") String objectId);
 }

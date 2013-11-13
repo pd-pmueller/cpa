@@ -25,4 +25,5 @@
   		<classifier>cdi1.0</classifier>
   	</dependency>
   </dependencies>
+  <packaging>pom</packaging>
 </project>

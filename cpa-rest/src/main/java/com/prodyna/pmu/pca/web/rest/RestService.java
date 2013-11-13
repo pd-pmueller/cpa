@@ -2,26 +2,17 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.pca.web.rest.impl;
+package com.prodyna.pmu.pca.web.rest;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-
-import com.prodyna.pmu.cpa.Conference;
-import com.prodyna.pmu.cpa.ejb.ConferenceService;
-import com.prodyna.pmu.pca.web.rest.ConferenceRestService;
+import com.prodyna.pmu.cpa.HasObjectId;
 
 /**
- * Implementation of the {@link ConferenceRestService} interface using the {@link ConferenceService} EJB.
+ * Contract for a CRUD REST service.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@RequestScoped
-public class ConferenceRestServiceImpl implements ConferenceRestService {
+public interface RestService<T extends HasObjectId> {
 
-	/** The service bean to use. */
-	private @Inject ConferenceService service;
-	
 	/**
 	 * Returns a list of all available object.
 	 * <p>
@@ -29,10 +20,7 @@ public class ConferenceRestServiceImpl implements ConferenceRestService {
 	 *
 	 * @return a list of objects, possibly empty.
 	 */
-	@Override
-	public Iterable<Conference> list() {
-		return service.list();
-	}
+	public Iterable<T> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -40,10 +28,7 @@ public class ConferenceRestServiceImpl implements ConferenceRestService {
 	 * @param objectId The identifier of the object to return.
 	 * @return the corresponding object.
 	 */
-	@Override
-	public Conference read(String objectId) {
-		return service.read(objectId);
-	}
+	public T read(String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -51,10 +36,7 @@ public class ConferenceRestServiceImpl implements ConferenceRestService {
 	 * @param object The object to store.
 	 * @return the stored object.
 	 */
-	@Override
-	public Conference create(Conference object) {
-		return service.create(object);
-	}
+	public T create(T object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -63,10 +45,7 @@ public class ConferenceRestServiceImpl implements ConferenceRestService {
 	 * @param object The object with which to update.
 	 * @return the updated object.
 	 */
-	@Override
-	public Conference update(String objectId, Conference object) {
-		return service.update(objectId, object);
-	}
+	public T update(String objectId, T object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -74,8 +53,5 @@ public class ConferenceRestServiceImpl implements ConferenceRestService {
 	 * @param objectId The identifier of the object to delete.
 	 * @return the deleted object.
 	 */
-	@Override
-	public Conference delete(String objectId) {
-		return service.delete(objectId);
-	}
+	public T delete(String objectId);
 }

@@ -2,7 +2,7 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.cpa.ejb;
+package com.prodyna.pmu.pca.web.rest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,34 +14,25 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.HasObjectId;
+import com.prodyna.pmu.cpa.Room;
 
 /**
- * Base interface for all RESTful CRUD services within this application.
+ * Interface and JAX-RS definition for the {@code Room} CRUD REST service.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
- * @param <T> The entity type that is serviced by the implementing class.
  */
-public interface EntityService<T extends HasObjectId> {
+@Path("room")
+public interface RoomRestService extends RestService<Room> {
 
 	/**
-	 * Extension to the base service, allowing the listing of object.
+	 * Returns a list of all available object.
+	 * <p>
+	 * Note that the implementation is free to limit the number of object returned by this service method.
 	 *
-	 * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
-	 * @param <T> The entity type that is serviced by the implementing class.
+	 * @return a list of objects, possibly empty.
 	 */
-	public interface Listable<T extends HasObjectId> extends EntityService<T> {
-
-		/**
-		 * Returns a list of all available object.
-		 * <p>
-		 * Note that the implementation is free to limit the number of object returned by this service method.
-		 *
-		 * @return a list of objects, possibly empty.
-		 */
-		@GET @Produces(MediaType.APPLICATION_JSON)
-		Iterable<T> list();
-	}
+	@GET @Produces(MediaType.APPLICATION_JSON)
+	public Iterable<Room> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -50,7 +41,7 @@ public interface EntityService<T extends HasObjectId> {
 	 * @return the corresponding object.
 	 */
 	@GET @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	T read(@PathParam("objectId") String objectId);
+	public Room read(@PathParam("objectId") String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -58,8 +49,8 @@ public interface EntityService<T extends HasObjectId> {
 	 * @param object The object to store.
 	 * @return the stored object.
 	 */
-	@POST @Consumes(MediaType.APPLICATION_JSON)
-	T create(T object);
+	@POST @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
+	public Room create(Room object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -68,8 +59,8 @@ public interface EntityService<T extends HasObjectId> {
 	 * @param object The object with which to update.
 	 * @return the updated object.
 	 */
-	@PUT @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	T update(@PathParam("{objectId}") String objectId, T object);
+	@PUT @Path("{objectId}") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
+	public Room update(@PathParam("objectId") String objectId, Room object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -78,5 +69,5 @@ public interface EntityService<T extends HasObjectId> {
 	 * @return the deleted object.
 	 */
 	@DELETE @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	T delete(@PathParam("objectId") String objectId);
+	public Room delete(@PathParam("objectId") String objectId);
 }

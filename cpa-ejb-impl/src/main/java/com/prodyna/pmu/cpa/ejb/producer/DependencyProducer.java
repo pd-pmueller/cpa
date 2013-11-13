@@ -27,8 +27,12 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.prodyna.pmu.cpa.Conference;
 import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.Speaker;
+import com.prodyna.pmu.cpa.Talk;
 import com.prodyna.pmu.cpa.ejb.entity.ConferenceEntity;
 import com.prodyna.pmu.cpa.ejb.entity.RoomEntity;
+import com.prodyna.pmu.cpa.ejb.entity.SpeakerEntity;
+import com.prodyna.pmu.cpa.ejb.entity.TalkEntity;
 
 /**
  * This class produces all dependencies for the project.
@@ -90,11 +94,27 @@ public class DependencyProducer {
 		// Mappable classes
 		factory.registerClassMap(
 				factory.classMap(Conference.class, ConferenceEntity.class)
-					.field("objectId", "id").toClassMap()
+					.field("objectId", "id")
+					.byDefault()
+					.toClassMap()
 		);
 		factory.registerClassMap(
 				factory.classMap(Room.class, RoomEntity.class)
-					.field("objectId", "id").toClassMap()
+					.field("objectId", "id")
+					.byDefault()
+					.toClassMap()
+		);
+		factory.registerClassMap(
+				factory.classMap(Speaker.class, SpeakerEntity.class)
+					.field("objectId", "id")
+					.byDefault()
+					.toClassMap()
+		);
+		factory.registerClassMap(
+				factory.classMap(Talk.class, TalkEntity.class)
+					.field("objectId", "id")
+					.byDefault()
+					.toClassMap()
 		);
 		// Converters
 		ConverterFactory converters = factory.getConverterFactory();

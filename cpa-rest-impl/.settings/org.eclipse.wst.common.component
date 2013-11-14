@@ -9,6 +9,9 @@
         <dependent-module archiveName="cpa-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cpa-common/cpa-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="cpa-rest-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cpa-rest/cpa-rest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/conference-web/target/classes"/>
         <property name="context-root" value="cpa-rest-impl"/>
     </wb-module>

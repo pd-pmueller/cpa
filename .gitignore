@@ -1,8 +1,12 @@
 /target
 /.settings
 /.project
+/.classpath
 /.errai
+/.gwt
 /**/target
 /**/.settings
 /**/.project
+/**/.classpath
 /**/.errai
+/**/.gwt

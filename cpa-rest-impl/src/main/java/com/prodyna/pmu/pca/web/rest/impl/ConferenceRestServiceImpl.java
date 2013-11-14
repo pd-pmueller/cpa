@@ -7,7 +7,7 @@ package com.prodyna.pmu.pca.web.rest.impl;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.prodyna.pmu.cpa.Conference;
+import com.prodyna.pmu.cpa.domain.Conference;
 import com.prodyna.pmu.cpa.ejb.ConferenceService;
 import com.prodyna.pmu.pca.web.rest.ConferenceRestService;
 

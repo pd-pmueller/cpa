@@ -8,8 +8,9 @@
   </parent>
   
   <artifactId>cpa-common</artifactId>
+  <packaging>jar</packaging>
   
-  <name>cpa-common</name>
+  <name>CPA Common</name>
   <description>Common classes for the Conference Planner (PAC) application</description>
   
   <dependencies>
@@ -25,5 +26,21 @@
   		<classifier>cdi1.0</classifier>
   	</dependency>
   </dependencies>
-  <packaging>pom</packaging>
+  
+  <build>
+  	<plugins>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-source-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <id>attach-sources</id>
+			      <goals>
+			        <goal>jar</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+  	</plugins>
+  </build>
 </project>

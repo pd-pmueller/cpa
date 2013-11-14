@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 
 import org.mongodb.morphia.query.UpdateOperations;
 
-import com.prodyna.pmu.cpa.Speaker;
+import com.prodyna.pmu.cpa.domain.Speaker;
 import com.prodyna.pmu.cpa.ejb.SpeakerService;
 import com.prodyna.pmu.cpa.ejb.entity.SpeakerEntity;
 

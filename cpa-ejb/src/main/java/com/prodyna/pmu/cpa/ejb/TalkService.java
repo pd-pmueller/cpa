@@ -4,7 +4,7 @@
  */
 package com.prodyna.pmu.cpa.ejb;
 
-import com.prodyna.pmu.cpa.Talk;
+import com.prodyna.pmu.cpa.domain.Talk;
 
 /**
  * EJB service interface for the {@link Talk} entity.

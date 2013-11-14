@@ -14,7 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.domain.Room;
 
 /**
  * Interface and JAX-RS definition for the {@code Room} CRUD REST service.

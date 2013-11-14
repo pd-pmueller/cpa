@@ -15,7 +15,7 @@ import javax.ejb.Stateless;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.UpdateOperations;
 
-import com.prodyna.pmu.cpa.Conference;
+import com.prodyna.pmu.cpa.domain.Conference;
 import com.prodyna.pmu.cpa.ejb.ConferenceService;
 import com.prodyna.pmu.cpa.ejb.entity.ConferenceEntity;
 

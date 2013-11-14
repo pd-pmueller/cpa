@@ -7,7 +7,7 @@ package com.prodyna.pmu.pca.web.rest.impl;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.domain.Room;
 import com.prodyna.pmu.cpa.ejb.RoomService;
 import com.prodyna.pmu.pca.web.rest.RoomRestService;
 

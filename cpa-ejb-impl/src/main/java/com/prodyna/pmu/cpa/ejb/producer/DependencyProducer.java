@@ -25,10 +25,10 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Throwables;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.prodyna.pmu.cpa.Conference;
-import com.prodyna.pmu.cpa.Room;
-import com.prodyna.pmu.cpa.Speaker;
-import com.prodyna.pmu.cpa.Talk;
+import com.prodyna.pmu.cpa.domain.Conference;
+import com.prodyna.pmu.cpa.domain.Room;
+import com.prodyna.pmu.cpa.domain.Speaker;
+import com.prodyna.pmu.cpa.domain.Talk;
 import com.prodyna.pmu.cpa.ejb.entity.ConferenceEntity;
 import com.prodyna.pmu.cpa.ejb.entity.RoomEntity;
 import com.prodyna.pmu.cpa.ejb.entity.SpeakerEntity;
@@ -63,7 +63,7 @@ public class DependencyProducer {
 	public Morphia getMorphia() {
 		if (morphia == null) {
   		morphia = new Morphia();
-  		morphia.mapPackage("com.prodyna.pmu.cpa.ejb.entity");
+  		morphia.mapPackage("com.prodyna.pmu.cpa.domain.ejb.entity");
 		}
 		return morphia;
 	}

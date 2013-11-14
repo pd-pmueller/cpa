@@ -4,12 +4,13 @@
  */
 package com.prodyna.pmu.pca.web.rest;
 
-import com.prodyna.pmu.cpa.HasObjectId;
+import com.prodyna.pmu.cpa.domain.HasObjectId;
 
 /**
  * Contract for a CRUD REST service.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
+ * @param <T> The type of object that is serviced.
  */
 public interface RestService<T extends HasObjectId> {
 

@@ -4,7 +4,7 @@
  */
 package com.prodyna.pmu.cpa.ejb;
 
-import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.domain.Room;
 
 /**
  * EJB service interface for the {@link Room} entity.

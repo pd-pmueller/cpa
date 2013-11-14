@@ -9,7 +9,7 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
-import com.prodyna.pmu.cpa.Speaker;
+import com.prodyna.pmu.cpa.domain.Speaker;
 
 /**
  * TODO Comment on type 

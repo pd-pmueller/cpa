@@ -9,7 +9,7 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
-import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.domain.Room;
 
 /**
  * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Room} entity.
@@ -19,7 +19,7 @@ import com.prodyna.pmu.cpa.Room;
 @Entity(value="room", noClassnameStored=true)
 public class RoomEntity {
 
-	/** The unique object identifier. */
+	/** The implementation-specific unique object identifier. */
 	private @Id ObjectId id;
 
 	/** The name of the room. */
@@ -29,7 +29,7 @@ public class RoomEntity {
 	private Integer capacity;
 	
 	/**
-	 * Returns the {@code MongoDB} object identifier.
+	 * Returns the implementation-specific unique object identifier.
 	 *
 	 * @return the object identifier.
 	 */
@@ -47,36 +47,36 @@ public class RoomEntity {
 	}
 
 	/**
-	 * Returns the capacity of this room.
+	 * Returns the capacity of this room, in number of persons.
 	 *
-	 * @return a capacity.
+	 * @return the capacity.
 	 */
 	public Integer getCapacity() {
 		return capacity;
 	}
 
 	/**
-	 * Sets the objectId.
+	 * Sets the implementation-specific unique object identifier.
 	 *
-	 * @param id the objectId to set
+	 * @param id The identifier to set.
 	 */
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
 	/**
-	 * Sets the name.
+	 * Sets the name of this room.
 	 *
-	 * @param name the name to set
+	 * @param name The name to set.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Sets the capacity.
+	 * Sets the capacity of this room, in number of persons.
 	 *
-	 * @param capacity the capacity to set
+	 * @param capacity The capacity to set.
 	 */
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;

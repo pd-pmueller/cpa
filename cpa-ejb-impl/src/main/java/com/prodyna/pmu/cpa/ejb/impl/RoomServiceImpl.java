@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 
 import org.mongodb.morphia.query.UpdateOperations;
 
-import com.prodyna.pmu.cpa.Room;
+import com.prodyna.pmu.cpa.domain.Room;
 import com.prodyna.pmu.cpa.ejb.RoomService;
 import com.prodyna.pmu.cpa.ejb.entity.RoomEntity;
 

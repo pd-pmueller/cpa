@@ -4,7 +4,7 @@
  */
 package com.prodyna.pmu.cpa.ejb;
 
-import com.prodyna.pmu.cpa.Speaker;
+import com.prodyna.pmu.cpa.domain.Speaker;
 
 /**
  * EJB service interface for the {@link Speaker} entity.

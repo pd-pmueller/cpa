@@ -6,7 +6,7 @@ package com.prodyna.pmu.pca.web.rest.impl;
 
 import javax.inject.Inject;
 
-import com.prodyna.pmu.cpa.Talk;
+import com.prodyna.pmu.cpa.domain.Talk;
 import com.prodyna.pmu.cpa.ejb.TalkService;
 import com.prodyna.pmu.pca.web.rest.TalkRestService;
 

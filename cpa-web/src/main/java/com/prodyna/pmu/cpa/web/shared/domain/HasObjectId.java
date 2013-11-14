@@ -2,7 +2,7 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.cpa;
+package com.prodyna.pmu.cpa.web.shared.domain;
 
 /**
  * Interface for an object that holds a unique object identifier.

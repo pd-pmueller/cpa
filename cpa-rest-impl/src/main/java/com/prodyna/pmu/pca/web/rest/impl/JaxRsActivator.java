@@ -13,6 +13,6 @@ import javax.ws.rs.core.Application;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 @ApplicationPath("/rest")
-public class RestActivator extends Application {
+public class JaxRsActivator extends Application {
 	// Nothing to do
 }

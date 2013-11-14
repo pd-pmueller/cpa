@@ -2,7 +2,7 @@
  * $Id$
  * Copyright 2013 PRODYNA AG 
  */
-package com.prodyna.pmu.cpa;
+package com.prodyna.pmu.cpa.domain;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -4,7 +4,7 @@
  */
 package com.prodyna.pmu.cpa.ejb;
 
-import com.prodyna.pmu.cpa.Conference;
+import com.prodyna.pmu.cpa.domain.Conference;
 
 /**
  * EJB service interface for the {@link Conference} entity.

@@ -36,10 +36,14 @@
 			<artifactId>orika-core</artifactId>
 			<version>1.4.3</version>
 		</dependency>
+		<!-- Project dependencies -->
+		<dependency>
+			<groupId>com.prodyna.pmu.cpa</groupId>
+			<artifactId>cpa-common</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.prodyna.pmu.cpa</groupId>
 			<artifactId>cpa-ejb</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

@@ -6,7 +6,7 @@ package com.prodyna.pmu.cpa.ejb;
 
 import javax.ws.rs.PathParam;
 
-import com.prodyna.pmu.cpa.HasObjectId;
+import com.prodyna.pmu.cpa.domain.HasObjectId;
 
 /**
  * Base interface for all CRUD service beans within this application.

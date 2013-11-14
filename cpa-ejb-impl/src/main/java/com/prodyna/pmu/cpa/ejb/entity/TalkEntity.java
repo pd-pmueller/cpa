@@ -9,11 +9,10 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
-import com.prodyna.pmu.cpa.Room;
-import com.prodyna.pmu.cpa.Talk;
+import com.prodyna.pmu.cpa.domain.Talk;
 
 /**
- * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Room} entity.
+ * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Talk} entity.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */

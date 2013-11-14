@@ -1,0 +1,233 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.prodyna.pmu.cpa</groupId>
+		<artifactId>cpa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>cpa-web</artifactId>
+	<packaging>war</packaging>
+
+	<name>cpa-web</name>
+  <description>WebApp for the Conference Planner (PAC) application</description>
+
+	<properties>
+		<version.gwt>2.5.1</version.gwt>
+		<version.gwt.plugin>2.5.1</version.gwt.plugin>
+		
+		<version.org.jboss.spec.jboss.javaee6>3.0.2.Final</version.org.jboss.spec.jboss.javaee6>
+    <version.org.jboss.bom.errai>1.0.7.CR6</version.org.jboss.bom.errai>
+	</properties>
+	
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.spec</groupId>
+        <artifactId>jboss-javaee-6.0</artifactId>
+        <version>${version.org.jboss.spec.jboss.javaee6}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.bom</groupId>
+         <artifactId>jboss-javaee-6.0-with-errai</artifactId>
+         <version>${version.org.jboss.bom.errai}</version>
+         <type>pom</type>
+         <scope>import</scope>
+     </dependency>
+
+      <!-- Test dependencies -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.10</version>
+        <type>jar</type>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+	
+	<dependencies>
+    <!-- JBoss Errai -->
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-javaee-all</artifactId>
+    </dependency>
+    <!-- GWT -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    
+    <!-- JSR-303 Bean Validation -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <classifier>sources</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>4.2.0.Final</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>4.2.0.Final</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
+    <!-- Binary dependencies 
+		<dependency>
+			<groupId>com.prodyna.pmu.cpa</groupId>
+			<artifactId>cpa-rest</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		-->
+		<!-- Source dependencies 
+		<dependency>
+			<groupId>com.prodyna.pmu.cpa</groupId>
+			<artifactId>cpa-common</artifactId>
+			<version>${project.version}</version>
+      <classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.prodyna.pmu.cpa</groupId>
+			<artifactId>cpa-rest</artifactId>
+			<version>${project.version}</version>
+      <classifier>sources</classifier>
+		</dependency>
+		-->
+	</dependencies>
+    
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>${version.gwt.plugin}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>generateAsync</goal>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<warName>${project.artifactId}</warName>
+		
+					<!-- 
+						Exclude GWT client local classes from the deployment, lest classpath scanners such as Hibernate and 
+						Weld get confused when the webapp is bootstrapping.
+					-->
+					<packagingExcludes>**/javax/**/*.*,**/web/client/**/*.class</packagingExcludes>
+					<warSourceExcludes>WEB-INF/web.xml</warSourceExcludes>
+				</configuration>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${version.clean.plugin}</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}</directory>
+							<includes>
+								<include>www-test/**</include>
+								<include>.gwt/**</include>
+								<include>src/main/webapp/WEB-INF/deploy/**</include>
+								<include>src/main/webapp/WEB-INF/lib/**</include>
+								<include>src/main/webapp/App/**</include>
+								<include>**/gwt-unitCache/**</include>
+								<include>**/*.JUnit/**</include>
+								<include>monitordb.*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<configuration>
+					<filename>${project.artifactId}.${project.packaging}</filename>
+				</configuration>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${version.deploy.plugin}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+    </plugins>
+		
+		<pluginManagement>
+			<plugins>
+				<!--
+					This plugin's configuration is used to store Eclipse m2e settings only.
+					It has no influence on the Maven build itself.
+				-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>gwt-maven-plugin</artifactId>
+										<versionRange>[2.3.0,)</versionRange>
+										<goals>
+											<goal>resources</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

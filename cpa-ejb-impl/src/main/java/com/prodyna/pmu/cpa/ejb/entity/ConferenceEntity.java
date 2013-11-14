@@ -11,7 +11,7 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
-import com.prodyna.pmu.cpa.Conference;
+import com.prodyna.pmu.cpa.domain.Conference;
 
 /**
  * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Conference} entity.
@@ -21,7 +21,7 @@ import com.prodyna.pmu.cpa.Conference;
 @Entity(value="conference", noClassnameStored=true)
 public class ConferenceEntity {
 
-	/** The unique object identifier. */
+	/** The implementation-specific unique object identifier. */
 	private @Id ObjectId id;
 	
 	/** The name of the conference. */
@@ -36,66 +36,91 @@ public class ConferenceEntity {
 	/** The end date of the conference. */
 	private Date endDate;
 	
+	/**
+	 * Returns the implementation-specific object identifier.
+	 *
+	 * @return the object identifier.
+	 */
 	public ObjectId getId() {
 		return id;
 	}
 	
+	/**
+	 * Returns the name of this conference.
+	 *
+	 * @return a name.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Returns a brief description for this conference.
+	 *
+	 * @return a description text.
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Returns the begin date of this conference.
+	 *
+	 * @return a date.
+	 */
 	public Date getBeginDate() {
 		return beginDate;
 	}
 
+	/**
+	 * Returns the end date of this conference.
+	 *
+	 * @return a date.
+	 */
 	public Date getEndDate() {
 		return endDate;
 	}
 	
 	/**
-	 * Sets the objectId.
+	 * Sets the implementation-specific object identifier.
 	 *
-	 * @param id the id to set
+	 * @param id The identifier to set.
 	 */
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
 	/**
-	 * Sets the name.
+	 * Sets the name for this conference.
 	 *
-	 * @param name the name to set
+	 * @param name The name to set.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Sets the description.
+	 * Sets the description for this conference.
 	 *
-	 * @param description the description to set
+	 * @param description The description to set.
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * Sets the beginDate.
+	 * Sets the begin date for this conference.
 	 *
-	 * @param beginDate the beginDate to set
+	 * @param beginDate The date to set.
 	 */
 	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
 	}
 
 	/**
-	 * Sets the endDate.
+	 * Sets the end date for this conference.
 	 *
-	 * @param endDate the endDate to set
+	 * @param endDate The date to set.
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;

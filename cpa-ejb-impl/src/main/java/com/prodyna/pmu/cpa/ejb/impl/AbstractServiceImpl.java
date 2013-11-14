@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.prodyna.pmu.cpa.HasObjectId;
+import com.prodyna.pmu.cpa.domain.HasObjectId;
 import com.prodyna.pmu.cpa.ejb.EntityServiceBean;
 
 /**
@@ -34,7 +34,7 @@ import com.prodyna.pmu.cpa.ejb.EntityServiceBean;
 public abstract class AbstractServiceImpl<T extends HasObjectId, E> implements EntityServiceBean<T> {
 
 	/**
-	 * Abstract implementation of the {@link com.prodyna.pmu.cpa.ejb.EntityServiceBean.Listable} interface.
+	 * Abstract implementation of the {@link com.prodyna.pmu.cpa.domain.ejb.EntityServiceBean.Listable} interface.
 	 *
    * @param <T> The entity interface which is serviced.
    * @param <I> The entity implementation to use.

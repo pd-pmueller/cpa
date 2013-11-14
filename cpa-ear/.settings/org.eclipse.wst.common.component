@@ -2,5 +2,41 @@
     <wb-module deploy-name="cpa-ear-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="cpa-ejb-impl-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/cpa-ejb-impl/cpa-ejb-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="morphia-0.105.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/mongodb/morphia/morphia/0.105/morphia-0.105.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mongo-java-driver-2.11.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/mongodb/mongo-java-driver/2.11.3/mongo-java-driver-2.11.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="orika-core-1.4.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/ma/glasnost/orika/orika-core/1.4.3/orika-core-1.4.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javassist-3.16.1-GA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/javassist/javassist/3.16.1-GA/javassist-3.16.1-GA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="paranamer-2.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/thoughtworks/paranamer/paranamer/2.3/paranamer-2.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.6.6.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="concurrentlinkedhashmap-lru-1.2_jdk5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/googlecode/concurrentlinkedhashmap/concurrentlinkedhashmap-lru/1.2_jdk5/concurrentlinkedhashmap-lru-1.2_jdk5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cpa-common-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/cpa-common/cpa-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="guava-15.0-cdi1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/guava/guava/15.0/guava-15.0-cdi1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cpa-ejb-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/cpa-ejb/cpa-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cpa-rest-impl-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/cpa-rest-impl/cpa-rest-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

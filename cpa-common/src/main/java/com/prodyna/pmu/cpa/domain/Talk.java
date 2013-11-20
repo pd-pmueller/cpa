@@ -92,7 +92,7 @@ public class Talk implements HasObjectId, HasName, Serializable {
 	 *
 	 * @param objectId the identifier to set.
 	 */
-	public void setObjectId(String objectId) {
+	public void setObjectKey(String objectId) {
 		this.objectId = objectId;
 	}
 

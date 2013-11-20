@@ -6,6 +6,8 @@ package com.prodyna.pmu.cpa.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import com.google.common.base.Objects;
 
@@ -15,10 +17,10 @@ import com.google.common.base.Objects;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 public class Conference implements HasObjectId, HasName, Serializable {
-
+  
 	/** The {@code serialVersionUID}. */
   private static final long serialVersionUID = -6962966647288883653L;
-
+  
 	/** The unique object identifier. */
 	private String objectId;
 	
@@ -33,6 +35,9 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	
 	/** The end date of the conference. */
 	private Date endDate;
+	
+	/** The talks scheduled for this conference. */
+	private Set<String> talks = new LinkedHashSet<String>();
 	
 	/**
 	 * Constructs a new, empty {@code Conference} object.
@@ -103,6 +108,15 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	}
 	
 	/**
+	 * Returns the talks scheduled for this conference.
+	 *
+	 * @return a list of talks.
+	 */
+	public Set<String> getTalks() {
+		return talks;
+	}
+
+	/**
 	 * Sets the unique object identifier for this conference.
 	 *
 	 * @param objectId the identifier to set.
@@ -157,7 +171,8 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	  		getName(),
 	  		getDescription(),
 	  		getBeginDate(),
-	  		getEndDate()
+	  		getEndDate(),
+	  		getTalks()
 	  );
   }
 
@@ -175,7 +190,8 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	  		Objects.equal(this.getName(), that.getName()) &&
 	  		Objects.equal(this.getDescription(), that.getDescription()) &&
 	  		Objects.equal(this.getBeginDate(), that.getBeginDate()) &&
-	  		Objects.equal(this.getEndDate(), that.getEndDate())
+	  		Objects.equal(this.getEndDate(), that.getEndDate()) &&
+	  		Objects.equal(this.getTalks(), that.getTalks())
 	  );
   }
 }

@@ -4,6 +4,8 @@
  */
 package com.prodyna.pmu.cpa.web.shared.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,7 +16,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.web.shared.domain.Talk;
+import com.prodyna.pmu.cpa.web.shared.PortableTalk;
 
 /**
  * Interface and JAX-RS definition for the {@code Speaker} CRUD REST service.
@@ -22,7 +24,7 @@ import com.prodyna.pmu.cpa.web.shared.domain.Talk;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 @Path("talk")
-public interface TalkRestService extends RestService<Talk> {
+public interface TalkRestService extends RestService<PortableTalk> {
 
 	/**
 	 * Returns a list of all available object.
@@ -32,7 +34,7 @@ public interface TalkRestService extends RestService<Talk> {
 	 * @return a list of objects, possibly empty.
 	 */
 	@GET @Produces(MediaType.APPLICATION_JSON)
-	public Iterable<Talk> list();
+	public List<PortableTalk> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -41,7 +43,7 @@ public interface TalkRestService extends RestService<Talk> {
 	 * @return the corresponding object.
 	 */
 	@GET @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Talk read(@PathParam("objectId") String objectId);
+	public PortableTalk read(@PathParam("objectId") String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -50,7 +52,7 @@ public interface TalkRestService extends RestService<Talk> {
 	 * @return the stored object.
 	 */
 	@POST @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Talk create(Talk object);
+	public PortableTalk create(PortableTalk object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -60,7 +62,7 @@ public interface TalkRestService extends RestService<Talk> {
 	 * @return the updated object.
 	 */
 	@PUT @Path("{objectId}") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Talk update(@PathParam("objectId") String objectId, Talk object);
+	public PortableTalk update(@PathParam("objectId") String objectId, PortableTalk object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -69,5 +71,5 @@ public interface TalkRestService extends RestService<Talk> {
 	 * @return the deleted object.
 	 */
 	@DELETE @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Talk delete(@PathParam("objectId") String objectId);
+	public PortableTalk delete(@PathParam("objectId") String objectId);
 }

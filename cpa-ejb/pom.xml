@@ -22,6 +22,7 @@
 		<dependency>
 			<groupId>com.prodyna.pmu.cpa</groupId>
 			<artifactId>cpa-common</artifactId>
+			<scope>provided</scope>
 		</dependency>
   </dependencies>
 </project>

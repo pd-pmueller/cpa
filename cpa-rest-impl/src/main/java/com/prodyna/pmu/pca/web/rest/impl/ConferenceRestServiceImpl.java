@@ -4,12 +4,15 @@
  */
 package com.prodyna.pmu.pca.web.rest.impl;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import com.google.common.collect.Lists;
 import com.prodyna.pmu.cpa.domain.Conference;
 import com.prodyna.pmu.cpa.ejb.ConferenceService;
-import com.prodyna.pmu.pca.web.rest.ConferenceRestService;
+import com.prodyna.pmu.cpa.web.rest.ConferenceRestService;
 
 /**
  * Implementation of the {@link ConferenceRestService} interface using the {@link ConferenceService} EJB.
@@ -30,8 +33,8 @@ public class ConferenceRestServiceImpl implements ConferenceRestService {
 	 * @return a list of objects, possibly empty.
 	 */
 	@Override
-	public Iterable<Conference> list() {
-		return service.list();
+	public List<Conference> list() {
+		return Lists.newArrayList(service.list());
 	}
 	
 	/**

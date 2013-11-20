@@ -4,12 +4,15 @@
  */
 package com.prodyna.pmu.pca.web.rest.impl;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import com.google.common.collect.Lists;
 import com.prodyna.pmu.cpa.domain.Speaker;
 import com.prodyna.pmu.cpa.ejb.SpeakerService;
-import com.prodyna.pmu.pca.web.rest.SpeakerRestService;
+import com.prodyna.pmu.cpa.web.rest.SpeakerRestService;
 
 /**
  * Implementation of the {@link SpeakerRestService} interface using the {@link SpeakerService} EJB.
@@ -26,8 +29,8 @@ public class SpeakerRestServiceImpl implements SpeakerRestService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Iterable<Speaker> list() {
-		return service.list();
+	public List<Speaker> list() {
+		return Lists.newArrayList(service.list());
 	}
 
 	/**

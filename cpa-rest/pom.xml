@@ -20,6 +20,7 @@
   	<dependency>
   		<groupId>com.prodyna.pmu.cpa</groupId>
   		<artifactId>cpa-common</artifactId>
+			<scope>provided</scope>
   	</dependency>
   </dependencies>
   
@@ -37,6 +38,17 @@
 			    </execution>
 			  </executions>
 			</plugin>
+			<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>resources</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
   	</plugins>
   </build>
 </project>

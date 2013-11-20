@@ -2,7 +2,9 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.pca.web.rest;
+package com.prodyna.pmu.cpa.web.rest;
+
+import java.util.List;
 
 import com.prodyna.pmu.cpa.domain.HasObjectId;
 
@@ -21,7 +23,7 @@ public interface RestService<T extends HasObjectId> {
 	 *
 	 * @return a list of objects, possibly empty.
 	 */
-	public Iterable<T> list();
+	public List<T> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.

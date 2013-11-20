@@ -2,6 +2,12 @@
     <wb-module deploy-name="cpa-ear-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="cpa-rest-impl-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/cpa-rest-impl/cpa-rest-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cpa-web-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/cpa-web/cpa-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="cpa-ejb-impl-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/cpa-ejb-impl/cpa-ejb-impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -33,9 +39,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="cpa-ejb-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/cpa-ejb/cpa-ejb">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="cpa-rest-impl-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/cpa-rest-impl/cpa-rest-impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

@@ -4,11 +4,14 @@
  */
 package com.prodyna.pmu.pca.web.rest.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import com.google.common.collect.Lists;
 import com.prodyna.pmu.cpa.domain.Talk;
 import com.prodyna.pmu.cpa.ejb.TalkService;
-import com.prodyna.pmu.pca.web.rest.TalkRestService;
+import com.prodyna.pmu.cpa.web.rest.TalkRestService;
 
 /**
  * Implementation of the {@link TalkRestService} interface using the {@link TalkService} EJB.
@@ -24,8 +27,8 @@ public class TalkRestServiceImpl implements TalkRestService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Iterable<Talk> list() {
-		return service.list();
+	public List<Talk> list() {
+		return Lists.newArrayList(service.list());
 	}
 
 	/**

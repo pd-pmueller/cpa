@@ -2,9 +2,61 @@
 <html>
 	<head>
 		<title>Conference Planner Advanced</title>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="cpa/js/html5.js"></script>
+		<![endif]-->
+		<!--[if IE 7]>
+ 		<link rel="stylesheet" href="cpa/css/font-awesome-ie7.css">
+		<![endif]-->
 		<script type="text/javascript" src="cpa/cpa.nocache.js"></script>
+		<style type="text/css">
+			body {
+				padding: 0 !important;
+				margin: 0 !important;
+				font-size: 14px !important;
+			}
+			h1 {
+				font-size: 1.2em;
+				font-weight: bold;
+			}
+			
+			.invisible {
+				display: none;
+				opacity: 0;
+				height: 0;
+			}
+			.list {
+				margin-bottom: 2em;
+			}
+			.item {
+				background-color: #efefef;
+				margin: 1em 2em;
+				padding: 0.2em 0.4em;
+				/* Border */
+				border: solid 1px #dfdfdf;
+				-webkit-border-radius: 0.5em;
+				-moz-border-radius: 0.5em;
+				border-radius: 0.5em;
+				/* FX */
+				-moz-transition: opacity 1s ease, height 1s ease;
+				-webkit-transition: opacity 1s ease, height 1s ease;
+				-o-transition: opacity 1s ease, height 1s ease;
+				transition: opacity 1s ease, height 1s ease;
+				opacity: 1;
+			}
+			
+			.conference .name {
+				font-weight: bold;
+			}
+			.conference .dates {
+				clear: both;
+			}
+			.conference .date {
+				opacity: 0.8;
+			}
+		</style>
 	</head>
 	<body>
-		<iframe src="javascript:''" id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
+		<iframe src="javascript:''" id="__gwt_historyFrame" style="position:absolute;width:0;height:0;border:0;"></iframe>
 	</body>
 </html>

@@ -13,5 +13,11 @@ import com.prodyna.pmu.cpa.domain.Conference;
  */
 public interface ConferenceService extends EntityServiceBean.Listable<Conference> {
 	
-	// No additional methods supported
+	/**
+	 * Schedules a talk for the specified conference.
+	 *
+	 * @param conference The conference to schedule the talk for.
+	 * @param talk The talk to schedule.
+	 */
+	void schedule(String conference, String talk);
 }

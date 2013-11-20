@@ -11,15 +11,18 @@
 	<artifactId>cpa-web</artifactId>
 	<packaging>war</packaging>
 
-	<name>cpa-web</name>
-  <description>WebApp for the Conference Planner (PAC) application</description>
+	<name>CPA Web Client</name>
+  <description>Errai Web Client for the Conference Planner (PAC) application</description>
 
 	<properties>
-		<version.gwt>2.5.1</version.gwt>
 		<version.gwt.plugin>2.5.1</version.gwt.plugin>
 		
 		<version.org.jboss.spec.jboss.javaee6>3.0.2.Final</version.org.jboss.spec.jboss.javaee6>
-    <version.org.jboss.bom.errai>1.0.7.CR6</version.org.jboss.bom.errai>
+    <version.org.jboss.bom.errai>1.0.7.Final</version.org.jboss.bom.errai>
+    <version.org.jboss.errai>3.0.0.20131101-M2</version.org.jboss.errai>
+    <!-- <version.org.jboss.errai>2.3.2.Final</version.org.jboss.errai> -->
+    
+    <m2eclipse.wtp.contextRoot>/${project.artifactId}</m2eclipse.wtp.contextRoot>
 	</properties>
 	
   <dependencyManagement>
@@ -31,14 +34,13 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <dependency>
-         <groupId>org.jboss.bom</groupId>
-         <artifactId>jboss-javaee-6.0-with-errai</artifactId>
-         <version>${version.org.jboss.bom.errai}</version>
-         <type>pom</type>
-         <scope>import</scope>
-     </dependency>
+			<dependency>
+	      <groupId>org.jboss.errai</groupId>
+	      <artifactId>errai-javaee-all</artifactId>
+    		<version>${version.org.jboss.errai}</version>
+        <type>pom</type>
+        <scope>import</scope>
+			</dependency>
 
       <!-- Test dependencies -->
       <dependency>
@@ -56,55 +58,38 @@
     <dependency>
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-javaee-all</artifactId>
-    </dependency>
-    <!-- GWT -->
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    
-    <!-- JSR-303 Bean Validation -->
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <classifier>sources</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>4.2.0.Final</version>
-      <scope>provided</scope>
       <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId>
-        </exclusion>
+        <exclusion><groupId>org.jboss.errai</groupId><artifactId>errai-jpa-client</artifactId></exclusion>
+        <exclusion><groupId>org.jboss.errai</groupId><artifactId>errai-cdi-jetty</artifactId></exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>4.2.0.Final</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-uibinder</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-jboss-as-support</artifactId>
+		</dependency>
     
-    <!-- Binary dependencies 
+    <!-- External -->
+		<dependency>
+			<groupId>ma.glasnost.orika</groupId>
+			<artifactId>orika-core</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+    
+    <!-- Project -->
 		<dependency>
 			<groupId>com.prodyna.pmu.cpa</groupId>
-			<artifactId>cpa-rest</artifactId>
+			<artifactId>cpa-common</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		-->
+		<dependency>
+			<groupId>com.prodyna.pmu.cpa</groupId>
+			<artifactId>cpa-ejb</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<!-- Source dependencies 
 		<dependency>
 			<groupId>com.prodyna.pmu.cpa</groupId>
@@ -119,6 +104,11 @@
       <classifier>sources</classifier>
 		</dependency>
 		-->
+		<dependency>
+			<groupId>com.github.gwtbootstrap</groupId>
+			<artifactId>gwt-bootstrap</artifactId>
+			<version>2.2.1.0</version>
+		</dependency>
 	</dependencies>
     
 	<build>
@@ -127,12 +117,30 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>${version.gwt.plugin}</version>
+				<configuration>
+          <inplace>true</inplace>
+          <noServer>true</noServer>
+          <strict>false</strict>
+          <style>PRETTY</style>
+          <runTarget>http://localhost:8000/cpa-web/</runTarget>
+          <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000</extraJvmArgs>
+          <hostedWebapp>src/main/webapp/</hostedWebapp>
+          <logLevel>INFO</logLevel>
+        </configuration>
         <executions>
           <execution>
             <goals>
+              <goal>resources</goal>
               <goal>compile</goal>
               <goal>generateAsync</goal>
               <goal>test</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>gwt-clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
             </goals>
           </execution>
         </executions>
@@ -145,7 +153,6 @@
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<warName>${project.artifactId}</warName>
-		
 					<!-- 
 						Exclude GWT client local classes from the deployment, lest classpath scanners such as Hibernate and 
 						Weld get confused when the webapp is bootstrapping.
@@ -195,39 +202,6 @@
 				</configuration>
 			</plugin>
     </plugins>
-		
-		<pluginManagement>
-			<plugins>
-				<!--
-					This plugin's configuration is used to store Eclipse m2e settings only.
-					It has no influence on the Maven build itself.
-				-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>gwt-maven-plugin</artifactId>
-										<versionRange>[2.3.0,)</versionRange>
-										<goals>
-											<goal>resources</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 </project>

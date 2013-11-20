@@ -55,10 +55,10 @@ public class Room implements HasObjectId, HasName, Serializable {
 	/**
 	 * Sets the unique object identifier for this object.
 	 *
-	 * @param objectId The identifier to set.
+	 * @param objectKey The identifier to set.
 	 */
-	public void setObjectId(String objectId) {
-		this.objectId = objectId;
+	public void setObjectId(String objectKey) {
+		this.objectId = objectKey;
 	}
 
 	/**

@@ -4,7 +4,9 @@
  */
 package com.prodyna.pmu.cpa.web.shared.rest;
 
-import com.prodyna.pmu.cpa.web.shared.domain.HasObjectId;
+import java.util.List;
+
+import com.prodyna.pmu.cpa.web.shared.HasObjectId;
 
 /**
  * Contract for a CRUD REST service.
@@ -21,7 +23,7 @@ public interface RestService<T extends HasObjectId> {
 	 *
 	 * @return a list of objects, possibly empty.
 	 */
-	public Iterable<T> list();
+	public List<T> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.

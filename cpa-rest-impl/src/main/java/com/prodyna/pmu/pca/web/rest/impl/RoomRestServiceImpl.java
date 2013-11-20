@@ -4,12 +4,15 @@
  */
 package com.prodyna.pmu.pca.web.rest.impl;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import com.google.common.collect.Lists;
 import com.prodyna.pmu.cpa.domain.Room;
 import com.prodyna.pmu.cpa.ejb.RoomService;
-import com.prodyna.pmu.pca.web.rest.RoomRestService;
+import com.prodyna.pmu.cpa.web.rest.RoomRestService;
 
 /**
  * Implementation of the {@link RoomRestService} interface using the {@link RoomService} EJB.
@@ -26,8 +29,8 @@ public class RoomRestServiceImpl implements RoomRestService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Iterable<Room> list() {
-		return service.list();
+	public List<Room> list() {
+		return Lists.newArrayList(service.list());
 	}
 
 	/**

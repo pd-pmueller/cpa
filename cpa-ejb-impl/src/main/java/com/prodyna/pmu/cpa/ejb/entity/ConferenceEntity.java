@@ -5,6 +5,7 @@
 package com.prodyna.pmu.cpa.ejb.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
@@ -12,6 +13,7 @@ import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
 import com.prodyna.pmu.cpa.domain.Conference;
+import com.prodyna.pmu.cpa.ejb.entity.validation.TalkRef;
 
 /**
  * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Conference} entity.
@@ -35,6 +37,10 @@ public class ConferenceEntity {
 	
 	/** The end date of the conference. */
 	private Date endDate;
+	
+	/** The talks scheduled for this conference. */
+	@TalkRef
+	private Set<ObjectId> talks;
 	
 	/**
 	 * Returns the implementation-specific object identifier.
@@ -82,6 +88,15 @@ public class ConferenceEntity {
 	}
 	
 	/**
+	 * Returns the talks scheduled for this conference.
+	 *
+	 * @return the talks of this conference.
+	 */
+	public Set<ObjectId> getTalks() {
+		return talks;
+	}
+	
+	/**
 	 * Sets the implementation-specific object identifier.
 	 *
 	 * @param id The identifier to set.
@@ -125,6 +140,15 @@ public class ConferenceEntity {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	/**
+	 * Sets the talks scheduled for this conference.
+	 *
+	 * @param talks The scheduled talks.
+	 */
+	public void setTalks(Set<ObjectId> talks) {
+		this.talks = talks;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -136,7 +160,8 @@ public class ConferenceEntity {
 	  		getName(),
 	  		getDescription(),
 	  		getBeginDate(),
-	  		getEndDate()
+	  		getEndDate(),
+	  		getTalks()
 	  );
   }
 
@@ -154,7 +179,8 @@ public class ConferenceEntity {
 	  		Objects.equal(this.getName(), that.getName()) &&
 	  		Objects.equal(this.getDescription(), that.getDescription()) &&
 	  		Objects.equal(this.getBeginDate(), that.getBeginDate()) &&
-	  		Objects.equal(this.getEndDate(), that.getEndDate())
+	  		Objects.equal(this.getEndDate(), that.getEndDate()) &&
+	  		Objects.equal(this.getTalks(), that.getTalks())
 	  );
   }
 }

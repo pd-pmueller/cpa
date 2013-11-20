@@ -4,6 +4,8 @@
  */
 package com.prodyna.pmu.cpa.web.shared.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,7 +16,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.web.shared.domain.Speaker;
+import com.prodyna.pmu.cpa.web.shared.PortableSpeaker;
 
 /**
  * Interface and JAX-RS definition for the {@code Speaker} CRUD REST service.
@@ -22,7 +24,7 @@ import com.prodyna.pmu.cpa.web.shared.domain.Speaker;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 @Path("speaker")
-public interface SpeakerRestService extends RestService<Speaker> {
+public interface SpeakerRestService extends RestService<PortableSpeaker> {
 
 	/**
 	 * Returns a list of all available object.
@@ -32,7 +34,7 @@ public interface SpeakerRestService extends RestService<Speaker> {
 	 * @return a list of objects, possibly empty.
 	 */
 	@GET @Produces(MediaType.APPLICATION_JSON)
-	public Iterable<Speaker> list();
+	public List<PortableSpeaker> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -41,7 +43,7 @@ public interface SpeakerRestService extends RestService<Speaker> {
 	 * @return the corresponding object.
 	 */
 	@GET @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Speaker read(@PathParam("objectId") String objectId);
+	public PortableSpeaker read(@PathParam("objectId") String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -50,7 +52,7 @@ public interface SpeakerRestService extends RestService<Speaker> {
 	 * @return the stored object.
 	 */
 	@POST @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Speaker create(Speaker object);
+	public PortableSpeaker create(PortableSpeaker object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -60,7 +62,7 @@ public interface SpeakerRestService extends RestService<Speaker> {
 	 * @return the updated object.
 	 */
 	@PUT @Path("{objectId}") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Speaker update(@PathParam("objectId") String objectId, Speaker object);
+	public PortableSpeaker update(@PathParam("objectId") String objectId, PortableSpeaker object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -69,5 +71,5 @@ public interface SpeakerRestService extends RestService<Speaker> {
 	 * @return the deleted object.
 	 */
 	@DELETE @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Speaker delete(@PathParam("objectId") String objectId);
+	public PortableSpeaker delete(@PathParam("objectId") String objectId);
 }

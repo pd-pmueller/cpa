@@ -37,10 +37,10 @@ public interface EntityServiceBean<E extends HasObjectId> {
 	/**
 	 * Returns the object with the specified object identifier.
 	 *
-	 * @param objectId The identifier of the object to return.
+	 * @param key The identifier of the object to return.
 	 * @return the corresponding object.
 	 */
-	E read(String objectId);
+	E read(String key);
 	
 	/**
 	 * Inserts a new object.
@@ -53,17 +53,17 @@ public interface EntityServiceBean<E extends HasObjectId> {
 	/**
 	 * Updates an existing object identified by the specified identifier.
 	 *
-	 * @param objectId The identifier of the object to update.
+	 * @param key The identifier of the object to update.
 	 * @param object The object with which to update.
 	 * @return the updated object.
 	 */
-	E update(@PathParam("{objectId}") String objectId, E object);
+	E update(@PathParam("{objectId}") String key, E object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
 	 *
-	 * @param objectId The identifier of the object to delete.
+	 * @param key The identifier of the object to delete.
 	 * @return the deleted object.
 	 */
-	E delete(@PathParam("objectId") String objectId);
+	E delete(@PathParam("objectId") String key);
 }

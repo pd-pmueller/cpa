@@ -2,7 +2,9 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.pca.web.rest;
+package com.prodyna.pmu.cpa.web.rest;
+
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,15 +16,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.domain.Room;
+import com.prodyna.pmu.cpa.domain.Conference;
 
 /**
- * Interface and JAX-RS definition for the {@code Room} CRUD REST service.
+ * Interface and JAX-RS definition for the {@code Conference} CRUD REST service.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Path("room")
-public interface RoomRestService extends RestService<Room> {
+@Path("conference")
+public interface ConferenceRestService extends RestService<Conference> {
 
 	/**
 	 * Returns a list of all available object.
@@ -32,7 +34,7 @@ public interface RoomRestService extends RestService<Room> {
 	 * @return a list of objects, possibly empty.
 	 */
 	@GET @Produces(MediaType.APPLICATION_JSON)
-	public Iterable<Room> list();
+	public List<Conference> list();
 	
 	/**
 	 * Returns the object with the specified object identifier.
@@ -41,7 +43,7 @@ public interface RoomRestService extends RestService<Room> {
 	 * @return the corresponding object.
 	 */
 	@GET @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Room read(@PathParam("objectId") String objectId);
+	public Conference read(@PathParam("objectId") String objectId);
 	
 	/**
 	 * Inserts a new object.
@@ -50,7 +52,7 @@ public interface RoomRestService extends RestService<Room> {
 	 * @return the stored object.
 	 */
 	@POST @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Room create(Room object);
+	public Conference create(Conference object);
 	
 	/**
 	 * Updates an existing object identified by the specified identifier.
@@ -60,7 +62,7 @@ public interface RoomRestService extends RestService<Room> {
 	 * @return the updated object.
 	 */
 	@PUT @Path("{objectId}") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
-	public Room update(@PathParam("objectId") String objectId, Room object);
+	public Conference update(@PathParam("objectId") String objectId, Conference object);
 	
 	/**
 	 * Deletes the object with the specified identifier.
@@ -69,5 +71,5 @@ public interface RoomRestService extends RestService<Room> {
 	 * @return the deleted object.
 	 */
 	@DELETE @Path("{objectId}") @Produces(MediaType.APPLICATION_JSON)
-	public Room delete(@PathParam("objectId") String objectId);
+	public Conference delete(@PathParam("objectId") String objectId);
 }

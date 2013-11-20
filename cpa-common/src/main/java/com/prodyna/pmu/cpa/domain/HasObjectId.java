@@ -12,9 +12,9 @@ package com.prodyna.pmu.cpa.domain;
 public interface HasObjectId {
 
 	/**
-	 * Returns the unique object identifier for this object.
+	 * Returns the unique object key for this object.
 	 *
-	 * @return a unique object identifier.
+	 * @return a unique object key.
 	 */
 	String getObjectId();
 }

@@ -155,7 +155,7 @@ public abstract class AbstractServiceImpl<T extends HasObjectId, E> implements E
   @Override
   public T update(String objectId, T object) {
   	if (object.getObjectId() != null && !object.getObjectId().equals(objectId))
-  		throw new RuntimeException(); // TODO Proper exception implementation
+  		throw new RuntimeException("ObjectKey does not match requested instance"); // TODO Proper exception
   	// Prepare
   	UpdateOperations<E> updateOperations = datastore.createUpdateOperations(getEntityClass());
   	prepare(updateOperations, object);

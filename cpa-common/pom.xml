@@ -8,7 +8,6 @@
   </parent>
   
   <artifactId>cpa-common</artifactId>
-  <packaging>jar</packaging>
   
   <name>CPA Common</name>
   <description>Common classes for the Conference Planner (PAC) application</description>
@@ -41,6 +40,17 @@
 			    </execution>
 			  </executions>
 			</plugin>
+			<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>resources</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
   	</plugins>
   </build>
 </project>

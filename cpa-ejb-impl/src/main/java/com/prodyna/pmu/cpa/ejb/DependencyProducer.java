@@ -2,12 +2,13 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.cpa.ejb.producer;
+package com.prodyna.pmu.cpa.ejb;
 
 import java.net.UnknownHostException;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
+import javax.inject.Singleton;
 
 import ma.glasnost.orika.CustomConverter;
 import ma.glasnost.orika.MapperFacade;
@@ -59,7 +60,7 @@ public class DependencyProducer {
 	 *
 	 * @return a {@code Morphia} instance.
 	 */
-	@Produces
+	@Produces @Singleton
 	public Morphia getMorphia() {
 		if (morphia == null) {
   		morphia = new Morphia();
@@ -73,7 +74,7 @@ public class DependencyProducer {
 	 *
 	 * @return a {@code Mongo} instance.
 	 */
-	@Produces
+	@Produces @Singleton
 	public Mongo getMongo() {
 		try {
 			return new MongoClient("localhost");
@@ -88,7 +89,7 @@ public class DependencyProducer {
 	 *
 	 * @return a {@code MapperFacade} instance.
 	 */
-	@Produces
+	@Produces @Singleton
 	public MapperFacade getMapperFacade() {
 		MapperFactory factory = new DefaultMapperFactory.Builder().build();
 		// Mappable classes

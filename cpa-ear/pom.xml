@@ -20,8 +20,20 @@
         <artifactId>maven-ear-plugin</artifactId>
         <version>2.6</version>
         <configuration>
-            <version>6</version>
-            <defaultLibBundleDir>lib</defaultLibBundleDir>
+          <version>6</version>
+          <defaultLibBundleDir>lib</defaultLibBundleDir>
+          <modules>
+          	<webModule>
+          		<groupId>com.prodyna.pmu.cpa</groupId>
+          		<artifactId>cpa-rest-impl</artifactId>
+          		<contextRoot>/cpa-rest</contextRoot>
+          	</webModule>
+          	<webModule>
+          		<groupId>com.prodyna.pmu.cpa</groupId>
+          		<artifactId>cpa-web</artifactId>
+          		<contextRoot>/cpa-web</contextRoot>
+          	</webModule>
+          </modules>
         </configuration>
       </plugin>
     </plugins>
@@ -31,13 +43,19 @@
 	  <dependency>
 	  	<groupId>com.prodyna.pmu.cpa</groupId>
 	  	<artifactId>cpa-ejb-impl</artifactId>
-	  	<version>0.0.1-SNAPSHOT</version>
+	  	<version>${project.version}</version>
 	  	<type>ejb</type>
 	  </dependency>
 	  <dependency>
 	  	<groupId>com.prodyna.pmu.cpa</groupId>
 	  	<artifactId>cpa-rest-impl</artifactId>
-	  	<version>0.0.1-SNAPSHOT</version>
+	  	<version>${project.version}</version>
+	  	<type>war</type>
+	  </dependency>
+	  <dependency>
+	  	<groupId>com.prodyna.pmu.cpa</groupId>
+	  	<artifactId>cpa-web</artifactId>
+	  	<version>${project.version}</version>
 	  	<type>war</type>
 	  </dependency>
   </dependencies>

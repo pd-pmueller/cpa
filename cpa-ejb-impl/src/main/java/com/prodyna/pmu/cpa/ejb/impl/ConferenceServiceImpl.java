@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.UpdateOperations;
 
@@ -61,6 +62,23 @@ public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conferen
 	  return super.list();
   }
 
+	/**
+	 * {@inheritDoc}
+	 */
+  @Override
+  public void schedule(String conference, String talk) {
+  	Datastore datastore = getDatastore();
+  	// Prepare
+   	UpdateOperations<ConferenceEntity> updateOperations = datastore
+   			.createUpdateOperations(getEntityClass())
+   			.add("talks", new ObjectId(talk));
+   	// Execute
+   	datastore.findAndModify(
+   			queryById(conference),
+   			updateOperations
+   	);
+  }
+  
 	/**
 	 * {@inheritDoc}
 	 */

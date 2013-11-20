@@ -6,7 +6,7 @@ package com.prodyna.pmu.cpa.web.shared.rest;
 
 import java.util.List;
 
-import com.prodyna.pmu.cpa.web.shared.HasObjectId;
+import com.prodyna.pmu.cpa.web.shared.PortableObject;
 
 /**
  * Contract for a CRUD REST service.
@@ -14,7 +14,7 @@ import com.prodyna.pmu.cpa.web.shared.HasObjectId;
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  * @param <T> The type of object that is serviced.
  */
-public interface RestService<T extends HasObjectId> {
+public interface RestService<T extends PortableObject> {
 
 	/**
 	 * Returns a list of all available object.

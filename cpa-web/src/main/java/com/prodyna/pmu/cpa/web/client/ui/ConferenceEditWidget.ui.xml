@@ -1,0 +1,50 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+		xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+		xmlns:g="urn:import:com.google.gwt.user.client.ui"
+		xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+		xmlns:d="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
+	<ui:style>
+		/* CSS goes here. */
+	</ui:style>
+	<g:HTMLPanel>
+	
+		<b:Form ui:field="form" title="Conference" styleName="form-horizontal">
+			<b:Fieldset>
+				<b:ControlGroup>
+					<b:ControlLabel for="objectId">ID</b:ControlLabel>
+					<b:Controls>
+						<b:TextBox ui:field="objectId" name="objectId" readOnly="true"/>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup>
+					<b:ControlLabel for="name">Name</b:ControlLabel>
+					<b:Controls>
+						<b:TextBox ui:field="name" name="name" placeholder="Name"/>
+					</b:Controls>
+				</b:ControlGroup>
+				
+				<b:ControlGroup>
+					<b:ControlLabel for="beginDate">Begin</b:ControlLabel>
+					<b:Controls>
+						<d:DateBox ui:field="beginDate" placeholder="Begin"/>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup>
+					<b:ControlLabel for="endDate">End</b:ControlLabel>
+					<b:Controls>
+						<d:DateBox ui:field="endDate" placeholder="End"/>
+					</b:Controls>
+				</b:ControlGroup>
+				
+				<b:ControlGroup>
+					<b:Controls>
+						<b:SubmitButton ui:field="buttonSave" text="Save"/>
+						<b:Button ui:field="buttonCancel" text="Cancel"/>
+					</b:Controls>
+				</b:ControlGroup>
+			</b:Fieldset>
+		</b:Form>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

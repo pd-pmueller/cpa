@@ -5,6 +5,7 @@
 package com.prodyna.pmu.cpa.ejb.entity;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.bson.types.ObjectId;
@@ -13,7 +14,6 @@ import org.mongodb.morphia.annotations.Id;
 
 import com.google.common.base.Objects;
 import com.prodyna.pmu.cpa.domain.Conference;
-import com.prodyna.pmu.cpa.ejb.entity.validation.TalkRef;
 
 /**
  * {@code Morphia}/{@code MongoDB}-specific implementation of the {@link Conference} entity.
@@ -39,8 +39,7 @@ public class ConferenceEntity {
 	private Date endDate;
 	
 	/** The talks scheduled for this conference. */
-	@TalkRef
-	private Set<ObjectId> talks;
+	private Set<ObjectId> talks = new LinkedHashSet<ObjectId>();
 	
 	/**
 	 * Returns the implementation-specific object identifier.
@@ -141,15 +140,6 @@ public class ConferenceEntity {
 		this.endDate = endDate;
 	}
 	
-	/**
-	 * Sets the talks scheduled for this conference.
-	 *
-	 * @param talks The scheduled talks.
-	 */
-	public void setTalks(Set<ObjectId> talks) {
-		this.talks = talks;
-	}
-
 	/**
 	 * {@inheritDoc}
 	 */

@@ -5,6 +5,7 @@
 package com.prodyna.pmu.cpa.web.client;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
@@ -25,6 +26,38 @@ import com.prodyna.pmu.cpa.web.shared.event.AdminModeChange;
 @EntryPoint
 public class ClientEntryPoint {
 	
+	@ApplicationScoped
+	public static class ApplicationRuntime {
+
+		/** Event bus for {@code AdminModeChange} events. */
+		@Inject
+		private Event<AdminModeChange> adminModeChangeEvent;
+		
+		/** Flag whether the application is in admin mode. */
+		private boolean adminModeEnabled = true;
+		
+		/**
+		 * Returns whether the application is in admin mode.
+		 *
+		 * @return {@code true} if the application is in admin mode; {@code false} otherwise.
+		 */
+		public boolean isAdminModeEnabled() {
+			return adminModeEnabled;
+		}
+
+		/**
+		 * Sets the admin mode for the application.
+		 *
+		 * @param adminModeEnabled {@code true} to set admin mode; {@code false} for unprivileged mode.
+		 */
+		public void setAdminModeEnabled(boolean adminModeEnabled) {
+			if (this.adminModeEnabled != adminModeEnabled) {
+				this.adminModeEnabled = adminModeEnabled;
+				adminModeChangeEvent.fire(new AdminModeChange(adminModeEnabled));
+			}
+		}
+	}
+	
 	/** Errai's navigation. */
 	private @Inject Navigation navigation;
 	
@@ -34,35 +67,6 @@ public class ClientEntryPoint {
 	/** The {@code Menu}. */
 	@Inject 
 	private Menu menu;
-
-	/** Flag whether the application is in admin mode. */
-	private boolean adminModeEnabled = true;
-	
-	/** Event bus for {@code AdminModeChange} events. */
-	@Inject
-	private Event<AdminModeChange> adminModeChangeEvent;
-	
-	
-	/**
-	 * Returns whether the application is in admin mode.
-	 *
-	 * @return {@code true} if the application is in admin mode; {@code false} otherwise.
-	 */
-	public boolean isAdminModeEnabled() {
-		return adminModeEnabled;
-	}
-
-	/**
-	 * Sets the admin mode for the application.
-	 *
-	 * @param adminModeEnabled {@code true} to set admin mode; {@code false} for unprivileged mode.
-	 */
-	public void setAdminModeEnabled(boolean adminModeEnabled) {
-		if (this.adminModeEnabled != adminModeEnabled) {
-			this.adminModeEnabled = adminModeEnabled;
-			adminModeChangeEvent.fire(new AdminModeChange(adminModeEnabled));
-		}
-	}
 	
 	/**
 	 * Constructs this entry point when the application is accessed via a browser.

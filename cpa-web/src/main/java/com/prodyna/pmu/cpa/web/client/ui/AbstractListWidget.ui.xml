@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+		xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+		xmlns:g="urn:import:com.google.gwt.user.client.ui"
+		xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+		/* CSS goes here. */
+		.dates {
+			font-size: 0.7em;
+			opacity: 0.8;
+		}
+		.spacer {
+			margin: 0 1em;
+		}
+		.title {
+			font-weight: bold;
+		}
+		.badge {
+			margin-right: 2em;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	
+		<b:Well addStyleNames="itemContainer">
+			<g:HorizontalPanel width="100%">
+				<g:cell horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+					<g:InlineLabel ui:field="name" addStyleNames="{style.title}" />
+				</g:cell>
+				<g:cell horizontalAlignment="ALIGN_RIGHT" verticalAlignment="ALIGN_MIDDLE">
+					<b:ButtonGroup>
+						<b:Button ui:field="buttonDetails" text="Details" />
+						<b:Button ui:field="buttonDelete" text="Delete" type="DANGER" />
+					</b:ButtonGroup>
+				</g:cell>
+			</g:HorizontalPanel>
+		</b:Well>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

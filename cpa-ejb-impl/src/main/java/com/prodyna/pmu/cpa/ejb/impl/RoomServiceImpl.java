@@ -4,9 +4,12 @@
  */
 package com.prodyna.pmu.cpa.ejb.impl;
 
+import java.util.Arrays;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
+import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.UpdateOperations;
 
 import com.prodyna.pmu.cpa.domain.Room;
@@ -21,6 +24,32 @@ import com.prodyna.pmu.cpa.ejb.entity.RoomEntity;
 @Local @Stateless
 public class RoomServiceImpl extends AbstractServiceImpl.Listable<Room, RoomEntity> implements RoomService {
 
+	private RoomEntity create(String name, Integer capacity) {
+		RoomEntity result = new RoomEntity();
+		result.setName(name);
+		result.setCapacity(capacity);
+		return result;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+  @Override
+  public Iterable<Room> list() {
+  	Datastore ds = getDatastore();
+  	if (ds.find(getEntityClass()).countAll() == 0) {
+  		// TODO Remove
+  		ds.save(Arrays.asList(
+  				create("Room 1", 10),
+  				create("Room 2", 15),
+  				create("Room 3", 5),
+  				create("Room 4", 30)
+  		));
+  	}
+	  return super.list();
+  }
+
+	/**
 	/**
 	 * {@inheritDoc}
 	 */

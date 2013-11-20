@@ -45,6 +45,6 @@ public class TalkServiceImpl extends AbstractServiceImpl.Listable<Talk, TalkEnti
 		updateOperations
     		.set("name", object.getName())
     		.set("description", object.getDescription())
-    		.set("timeLimit", object.getTimeLimit());
+    		.set("timeLimit", object.getDuration());
   }	
 }

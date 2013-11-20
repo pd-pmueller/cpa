@@ -2,12 +2,13 @@
  * $Id$
  * Copyright 2013 PRODYNA AG 
  */
-package com.prodyna.pmu.cpa.domain;
+package com.prodyna.pmu.cpa.web.shared;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
-import java.util.Set;
+
+import org.jboss.errai.common.client.api.annotations.Portable;
+import org.jboss.errai.databinding.client.api.Bindable;
 
 import com.google.common.base.Objects;
 
@@ -16,11 +17,12 @@ import com.google.common.base.Objects;
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-public class Conference implements HasObjectId, HasName, Serializable {
-  
+@Portable @Bindable
+public class PortableConference implements PortableObject {
+
 	/** The {@code serialVersionUID}. */
   private static final long serialVersionUID = -6962966647288883653L;
-  
+
 	/** The unique object identifier. */
 	private String objectId;
 	
@@ -35,14 +37,14 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	
 	/** The end date of the conference. */
 	private Date endDate;
-	
+
 	/** The talks scheduled for this conference. */
-	private Set<String> talks = new LinkedHashSet<String>();
+	private LinkedHashSet<String> talks = new LinkedHashSet<String>();
 	
 	/**
 	 * Constructs a new, empty {@code Conference} object.
 	 */
-	public Conference() {
+	public PortableConference() {
 		super();
 	}
 	
@@ -55,7 +57,7 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	 * @param beginDate The begin date to set.
 	 * @param endDate The end date to set.
 	 */
-  public Conference(String objectId, String name, String description, Date beginDate, Date endDate) {
+  public PortableConference(String objectId, String name, String description, Date beginDate, Date endDate) {
     this();
   	this.objectId = objectId;
     this.name = name;
@@ -106,13 +108,13 @@ public class Conference implements HasObjectId, HasName, Serializable {
 	public Date getEndDate() {
 		return endDate;
 	}
-	
+
 	/**
 	 * Returns the talks scheduled for this conference.
 	 *
-	 * @return a set containing the {@code Talk} identifiers.
+	 * @return a list of talks.
 	 */
-	public Set<String> getTalks() {
+	public LinkedHashSet<String> getTalks() {
 		return talks;
 	}
 
@@ -183,8 +185,8 @@ public class Conference implements HasObjectId, HasName, Serializable {
   public boolean equals(Object obj) {
   	if (obj == null) return false;
   	if (this == obj) return true;
-  	if (obj instanceof Conference) return false;
-  	Conference that = (Conference) obj;
+  	if (obj instanceof PortableConference) return false;
+  	PortableConference that = (PortableConference) obj;
 	  return (
 	  		Objects.equal(this.getObjectId(), that.getObjectId()) &&
 	  		Objects.equal(this.getName(), that.getName()) &&

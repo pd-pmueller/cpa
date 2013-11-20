@@ -45,6 +45,7 @@ public class ConferenceServiceImpl extends AbstractServiceImpl.Listable<Conferen
   public Iterable<Conference> list() {
   	Datastore ds = getDatastore();
   	if (ds.find(getEntityClass()).countAll() == 0) {
+  		// TODO Remove
   		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
   		try {
   		ds.save(Arrays.asList(

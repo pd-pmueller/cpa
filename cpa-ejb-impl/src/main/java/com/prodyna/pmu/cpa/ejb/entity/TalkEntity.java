@@ -4,6 +4,10 @@
  */
 package com.prodyna.pmu.cpa.ejb.entity;
 
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -28,39 +32,57 @@ public class TalkEntity {
 	/** A brief description of the talk. */
 	private String description;
 	
-	/** The time limit in minutes. */
-	private Integer timeLimit;
+	/** The scheduled time. */
+	private Date time;
+	
+	/** The duration in minutes. */
+	private Integer duration;
 
+	/** The speakers assigned to this talk. */
+	private Set<ObjectId> speakers = new LinkedHashSet<ObjectId>();
+	
 	public ObjectId getId() {
 		return id;
-	}
-
-	public void setId(ObjectId id) {
-		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getDescription() {
 		return description;
+	}
+	
+	public Date getTime() {
+		return time;
+	}
+
+	public Integer getDuration() {
+		return duration;
+	}
+
+	public Set<ObjectId> getSpeakers() {
+		return speakers;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Integer getTimeLimit() {
-		return timeLimit;
+	public void setTime(Date time) {
+		this.time = time;
 	}
 
-	public void setTimeLimit(Integer timeLimit) {
-		this.timeLimit = timeLimit;
+	public void setDuration(Integer timeLimit) {
+		this.duration = timeLimit;
 	}
 
 	/**
@@ -72,7 +94,9 @@ public class TalkEntity {
 	  		getId(),
 	  		getName(),
 	  		getDescription(),
-	  		getTimeLimit()
+	  		getTime(),
+	  		getDuration(),
+	  		getSpeakers()
 	  );
   }
 
@@ -89,7 +113,9 @@ public class TalkEntity {
 	  		Objects.equal(this.getId(), that.getId()) &&
 	  		Objects.equal(this.getName(), that.getName()) &&
 	  		Objects.equal(this.getDescription(), that.getDescription()) &&
-	  		Objects.equal(this.getTimeLimit(), that.getTimeLimit())
+	  		Objects.equal(this.getTime(), that.getTime()) &&
+	  		Objects.equal(this.getDuration(), that.getDuration()) &&
+	  		Objects.equal(this.getSpeakers(), that.getSpeakers())
 	  );
   }
 }

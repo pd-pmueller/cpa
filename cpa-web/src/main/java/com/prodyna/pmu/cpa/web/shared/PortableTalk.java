@@ -2,12 +2,13 @@
  * $Id$
  * Copyright 2013 PRODYNA AG
  */
-package com.prodyna.pmu.cpa.domain;
+package com.prodyna.pmu.cpa.web.shared;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
-import java.util.Set;
+
+import org.jboss.errai.common.client.api.annotations.Portable;
+import org.jboss.errai.databinding.client.api.Bindable;
 
 import com.google.common.base.Objects;
 
@@ -16,7 +17,8 @@ import com.google.common.base.Objects;
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-public class Talk implements HasObjectId, HasName, Serializable {
+@Portable @Bindable
+public class PortableTalk implements PortableObject {
 
 	/** The {@code serialVersionUID}. */
   private static final long serialVersionUID = -6211271286655017993L;
@@ -30,19 +32,19 @@ public class Talk implements HasObjectId, HasName, Serializable {
 	/** A brief description of the speaker. */
 	private String description;
 
-	/** The time the talk is scheduled. */
+	/** The scheduled time. */
 	private Date time;
 	
 	/** The talk's time limit in minutes. */
 	private Integer duration;
-	
+
 	/** The speakers assigned to this talk. */
-	private Set<String> speakers = new LinkedHashSet<String>();
+	private LinkedHashSet<String> speakers = new LinkedHashSet<String>();
 	
 	/**
 	 * Constructs a new, empty {@code Talk} object.
 	 */
-	public Talk() {
+	public PortableTalk() {
 		super();
 	}
 	
@@ -52,10 +54,10 @@ public class Talk implements HasObjectId, HasName, Serializable {
 	 * @param objectId The unique object identifier to set.
 	 * @param name The name to set.
 	 * @param description The description to set.
-	 * @param time The time to schedule the talk for.
-	 * @param duration The duration to set.
+	 * @param time The scheduled time to set.
+	 * @param duration The time limit to set.
 	 */
-  public Talk(String objectId, String name, String description, Date time, Integer duration) {
+  public PortableTalk(String objectId, String name, String description, Date time, Integer duration) {
     this();
   	this.objectId = objectId;
     this.name = name;
@@ -106,13 +108,13 @@ public class Talk implements HasObjectId, HasName, Serializable {
 	public Integer getDuration() {
 		return duration;
 	}
-	
+
 	/**
 	 * Returns the speakers assigned to this talk.
 	 *
 	 * @return a set containing the {@code Speaker} identifiers.
 	 */
-	public Set<String> getSpeakers() {
+	public LinkedHashSet<String> getSpeakers() {
 		return speakers;
 	}
 
@@ -153,14 +155,14 @@ public class Talk implements HasObjectId, HasName, Serializable {
 	}
 
 	/**
-	 * Sets the duration of this talk.
+	 * Sets the duration for this talk.
 	 *
 	 * @param duration The duration to set.
 	 */
 	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -171,7 +173,8 @@ public class Talk implements HasObjectId, HasName, Serializable {
 	  		getName(),
 	  		getDescription(),
 	  		getTime(),
-	  		getDuration()
+	  		getDuration(),
+	  		getSpeakers()
 	  );
   }
 
@@ -182,14 +185,15 @@ public class Talk implements HasObjectId, HasName, Serializable {
   public boolean equals(Object obj) {
   	if (obj == null) return false;
   	if (this == obj) return true;
-  	if (obj instanceof Talk) return false;
-  	Talk that = (Talk) obj;
+  	if (obj instanceof PortableTalk) return false;
+  	PortableTalk that = (PortableTalk) obj;
 	  return (
 	  		Objects.equal(this.getObjectId(), that.getObjectId()) &&
 	  		Objects.equal(this.getName(), that.getName()) &&
 	  		Objects.equal(this.getDescription(), that.getDescription()) &&
 	  		Objects.equal(this.getTime(), that.getTime()) &&
-	  		Objects.equal(this.getDuration(), that.getDuration())
+	  		Objects.equal(this.getDuration(), that.getDuration()) &&
+	  		Objects.equal(this.getSpeakers(), that.getSpeakers())
 	  );
   }
 }

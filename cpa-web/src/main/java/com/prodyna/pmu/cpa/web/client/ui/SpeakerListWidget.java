@@ -9,7 +9,7 @@ import javax.enterprise.context.Dependent;
 import com.prodyna.pmu.cpa.web.shared.PortableSpeaker;
 
 /**
- * TODO Comment on type 
+ * Simple widget to show a {@link PortableSpeaker} on a list page.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
@@ -17,14 +17,14 @@ import com.prodyna.pmu.cpa.web.shared.PortableSpeaker;
 public class SpeakerListWidget extends AbstractListWidget<PortableSpeaker> {
 
 	/**
-	 * Constructs a new {@code RoomListWidget} object.
+	 * Constructs a new {@code SpeakerListWidget} object.
 	 */
   public SpeakerListWidget() {
 	  super();
   }
 
 	/**
-	 * Constructs a new {@code RoomListWidget} object.
+	 * Constructs a new {@code SpeakerListWidget} object.
 	 *
 	 * @param model The model to set.
 	 */

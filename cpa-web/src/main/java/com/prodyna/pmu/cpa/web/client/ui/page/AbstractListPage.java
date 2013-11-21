@@ -14,13 +14,13 @@ import javax.inject.Inject;
 import org.jboss.errai.ui.client.widget.HasModel;
 import org.jboss.errai.ui.client.widget.ListWidget;
 import org.jboss.errai.ui.nav.client.local.PageShown;
+import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.prodyna.pmu.cpa.web.client.ClientEntryPoint.ApplicationRuntime;
@@ -93,6 +93,13 @@ public abstract class AbstractListPage<M extends PortableObject, W extends HasMo
 	 * Triggered when showing the page to load the object list.
 	 */
 	protected abstract void load();
+	
+	/**
+	 * Returns the {@link TransitionTo} object for creating a new object.
+	 *
+	 * @return a transition object.
+	 */
+	protected abstract TransitionTo<?> transitionToNew();
 
   /**
    * Event observer for {@link AdminModeChange} events.
@@ -111,8 +118,10 @@ public abstract class AbstractListPage<M extends PortableObject, W extends HasMo
 	private void setup() {
 		buttonNew.addClickHandler(new ClickHandler() {
 			@Override public void onClick(ClickEvent event) {
-				Window.alert("New!");
-				// TODO
+				TransitionTo<?> transition = transitionToNew();
+				if (transition != null) {
+					transition.go(PageStates.empty());
+				}
 			}
 		});
 	}

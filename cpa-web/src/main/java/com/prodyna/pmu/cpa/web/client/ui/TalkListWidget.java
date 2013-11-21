@@ -9,7 +9,7 @@ import javax.enterprise.context.Dependent;
 import com.prodyna.pmu.cpa.web.shared.PortableTalk;
 
 /**
- * TODO Comment on type 
+ * Simple widget to show a {@link PortableTalk} on a list page.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
@@ -17,14 +17,14 @@ import com.prodyna.pmu.cpa.web.shared.PortableTalk;
 public class TalkListWidget extends AbstractListWidget<PortableTalk> {
 
 	/**
-	 * Constructs a new {@code RoomListWidget} object.
+	 * Constructs a new {@code TalkListWidget} object.
 	 */
   public TalkListWidget() {
 	  super();
   }
 
 	/**
-	 * Constructs a new {@code RoomListWidget} object.
+	 * Constructs a new {@code TalkListWidget} object.
 	 *
 	 * @param model The model to set.
 	 */

@@ -6,21 +6,30 @@
 		xmlns:d="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
 	<ui:style>
 		/* CSS goes here. */
+		.form {
+			margin-top: 2em;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 	
-		<b:Form ui:field="form" title="Conference" styleName="form-horizontal">
+		<b:Form ui:field="form" title="Conference" styleName="form-horizontal" addStyleNames="{style.form}">
 			<b:Fieldset>
 				<b:ControlGroup>
 					<b:ControlLabel for="objectId">ID</b:ControlLabel>
 					<b:Controls>
-						<b:TextBox ui:field="objectId" name="objectId" readOnly="true"/>
+						<b:TextBox ui:field="objectId" name="objectId" readOnly="true" enabled="false"/>
 					</b:Controls>
 				</b:ControlGroup>
 				<b:ControlGroup>
 					<b:ControlLabel for="name">Name</b:ControlLabel>
 					<b:Controls>
 						<b:TextBox ui:field="name" name="name" placeholder="Name"/>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup>
+					<b:ControlLabel for="description">Description</b:ControlLabel>
+					<b:Controls>
+						<b:TextArea ui:field="description" name="description" placeholder="Description"/>
 					</b:Controls>
 				</b:ControlGroup>
 				
@@ -34,6 +43,13 @@
 					<b:ControlLabel for="endDate">End</b:ControlLabel>
 					<b:Controls>
 						<d:DateBox ui:field="endDate" placeholder="End"/>
+					</b:Controls>
+				</b:ControlGroup>
+				
+				<b:ControlGroup>
+					<b:ControlLabel>Talks</b:ControlLabel>
+					<b:Controls>
+						<g:SimplePanel ui:field="talksContainer"></g:SimplePanel>
 					</b:Controls>
 				</b:ControlGroup>
 				

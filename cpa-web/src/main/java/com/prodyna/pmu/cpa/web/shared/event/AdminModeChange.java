@@ -4,6 +4,7 @@
  */
 package com.prodyna.pmu.cpa.web.shared.event;
 
+import org.jboss.errai.bus.client.api.Local;
 import org.jboss.errai.common.client.api.annotations.Portable;
 
 /**
@@ -11,7 +12,7 @@ import org.jboss.errai.common.client.api.annotations.Portable;
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
-@Portable
+@Portable @Local
 public class AdminModeChange {
 
 	/** Flag whether the admin mode was enabled or disabled. */

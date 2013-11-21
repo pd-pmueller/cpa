@@ -4,6 +4,8 @@
  */
 package com.prodyna.pmu.cpa.ejb.impl;
 
+import java.util.Arrays;
+
 import javax.inject.Inject;
 
 import ma.glasnost.orika.MapperFacade;
@@ -145,8 +147,11 @@ public abstract class AbstractServiceImpl<T extends HasObjectId, E> implements E
 	 */
   @Override
   public T create(T object) {
-		datastore.save(object);
-		return object;
+		E entity = map(object);
+		// Save
+  	datastore.save(entity);
+  	// Return
+		return map(entity);
   }
 
 	/**

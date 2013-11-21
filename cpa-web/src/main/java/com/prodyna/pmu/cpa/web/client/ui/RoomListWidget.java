@@ -9,7 +9,7 @@ import javax.enterprise.context.Dependent;
 import com.prodyna.pmu.cpa.web.shared.PortableRoom;
 
 /**
- * TODO Comment on type 
+ * Simple widget to show a {@link PortableRoom} on a list page.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */

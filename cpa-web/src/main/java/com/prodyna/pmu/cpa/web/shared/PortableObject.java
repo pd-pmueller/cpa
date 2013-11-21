@@ -6,8 +6,6 @@ package com.prodyna.pmu.cpa.web.shared;
 
 import java.io.Serializable;
 
-import org.jboss.errai.common.client.api.annotations.Portable;
-
 /**
  * Interface for a portable object.
  *

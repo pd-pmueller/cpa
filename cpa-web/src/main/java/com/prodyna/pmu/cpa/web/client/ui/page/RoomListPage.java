@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.ui.nav.client.local.Page;
+import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.prodyna.pmu.cpa.web.client.ui.RoomListWidget;
@@ -47,5 +48,13 @@ public class RoomListPage extends AbstractListPage<PortableRoom, RoomListWidget>
 				setItems(response);
       }
 		}).list();
+  }
+
+	/**
+	 * {@inheritDoc}
+	 */
+  @Override
+  protected TransitionTo<?> transitionToNew() {
+	  return null;
   }
 }

@@ -16,7 +16,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.prodyna.pmu.cpa.web.shared.PortableConference;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableConference;
 
 /**
  * Interface and JAX-RS definition for the {@code Conference} CRUD REST service.

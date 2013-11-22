@@ -15,7 +15,7 @@ import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.prodyna.pmu.cpa.web.client.ui.SpeakerListWidget;
-import com.prodyna.pmu.cpa.web.shared.PortableSpeaker;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableSpeaker;
 import com.prodyna.pmu.cpa.web.shared.rest.SpeakerRestService;
 
 /**

@@ -24,8 +24,10 @@
 		<when-type-is class="javax.validation.ValidatorFactory"/>
 	</replace-with>
 
-	<!-- For compilation speed -->
+	<!-- Compile only for the specified target user agents -->
+	<!-- 
 	<set-property name="user.agent" value="safari"/>
+	-->
 
 	<!-- Resources -->
 	<stylesheet src="client.css"/>

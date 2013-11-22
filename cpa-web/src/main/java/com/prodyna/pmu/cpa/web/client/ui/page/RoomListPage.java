@@ -15,7 +15,7 @@ import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.prodyna.pmu.cpa.web.client.ui.RoomListWidget;
-import com.prodyna.pmu.cpa.web.shared.PortableRoom;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableRoom;
 import com.prodyna.pmu.cpa.web.shared.rest.RoomRestService;
 
 /**

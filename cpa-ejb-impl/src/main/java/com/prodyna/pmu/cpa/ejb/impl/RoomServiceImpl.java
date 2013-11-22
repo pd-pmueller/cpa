@@ -10,19 +10,18 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.query.UpdateOperations;
 
 import com.prodyna.pmu.cpa.domain.Room;
-import com.prodyna.pmu.cpa.ejb.RoomService;
-import com.prodyna.pmu.cpa.ejb.entity.RoomEntity;
+import com.prodyna.pmu.cpa.ejb.RoomServiceBean;
+import com.prodyna.pmu.cpa.ejb.domain.RoomEntity;
 
 /**
- * EJB service bean implementation of the {@link RoomService} interface.
+ * EJB service bean implementation of the {@link RoomServiceBean} interface.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 @Local @Stateless
-public class RoomServiceImpl extends AbstractServiceImpl.Listable<Room, RoomEntity> implements RoomService {
+public class RoomServiceImpl extends AbstractServiceBeanImpl.Listable<Room, RoomEntity> implements RoomServiceBean {
 
 	private RoomEntity create(String name, Integer capacity) {
 		RoomEntity result = new RoomEntity();
@@ -50,7 +49,6 @@ public class RoomServiceImpl extends AbstractServiceImpl.Listable<Room, RoomEnti
   }
 
 	/**
-	/**
 	 * {@inheritDoc}
 	 */
   @Override
@@ -64,15 +62,5 @@ public class RoomServiceImpl extends AbstractServiceImpl.Listable<Room, RoomEnti
   @Override
   protected Class<RoomEntity> getEntityClass() {
 	  return RoomEntity.class;
-  }
-
-	/**
-	 * {@inheritDoc}
-	 */
-  @Override
-  protected void prepare(UpdateOperations<RoomEntity> updateOperations, Room object) {
-		updateOperations
-    		.set("name", object.getName())
-    		.set("capacity", object.getCapacity());
   }
 }

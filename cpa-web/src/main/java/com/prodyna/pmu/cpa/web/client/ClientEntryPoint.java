@@ -26,6 +26,9 @@ import com.prodyna.pmu.cpa.web.shared.event.AdminModeChange;
 @EntryPoint
 public class ClientEntryPoint {
 	
+	/**
+	 * This class holds runtime information on the current application instance.
+	 */
 	@ApplicationScoped
 	public static class ApplicationRuntime {
 
@@ -74,7 +77,7 @@ public class ClientEntryPoint {
 	@PostConstruct
 	private void construct() {
 		// RestClient configuration
-		RestClient.setApplicationRoot("/cpa-rest/rest");
+		RestClient.setApplicationRoot("/cpa-web/rest");
 		RestClient.setJacksonMarshallingActive(true);
 		// UI setup
     layout.add(menu, DockPanel.NORTH);

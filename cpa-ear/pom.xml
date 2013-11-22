@@ -25,11 +25,6 @@
           <modules>
           	<webModule>
           		<groupId>com.prodyna.pmu.cpa</groupId>
-          		<artifactId>cpa-rest-impl</artifactId>
-          		<contextRoot>/cpa-rest</contextRoot>
-          	</webModule>
-          	<webModule>
-          		<groupId>com.prodyna.pmu.cpa</groupId>
           		<artifactId>cpa-web</artifactId>
           		<contextRoot>/cpa-web</contextRoot>
           	</webModule>
@@ -45,12 +40,6 @@
 	  	<artifactId>cpa-ejb-impl</artifactId>
 	  	<version>${project.version}</version>
 	  	<type>ejb</type>
-	  </dependency>
-	  <dependency>
-	  	<groupId>com.prodyna.pmu.cpa</groupId>
-	  	<artifactId>cpa-rest-impl</artifactId>
-	  	<version>${project.version}</version>
-	  	<type>war</type>
 	  </dependency>
 	  <dependency>
 	  	<groupId>com.prodyna.pmu.cpa</groupId>

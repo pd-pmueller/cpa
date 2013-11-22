@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
 <beans xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+	
+	<interceptors>
+		<class>com.prodyna.pmu.cpa.ejb.impl.intercept.LoggedInterceptor</class>
+		<class>com.prodyna.pmu.cpa.ejb.impl.intercept.MonitoredInterceptor</class>
+	</interceptors>
 
 </beans>

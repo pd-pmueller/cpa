@@ -6,7 +6,7 @@ package com.prodyna.pmu.cpa.web.shared.rest;
 
 import java.util.List;
 
-import com.prodyna.pmu.cpa.web.shared.PortableObject;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableObject;
 
 /**
  * Contract for a CRUD REST service.

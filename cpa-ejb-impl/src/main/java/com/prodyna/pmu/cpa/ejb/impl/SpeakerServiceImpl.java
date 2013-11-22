@@ -10,20 +10,19 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.query.UpdateOperations;
 
 import com.prodyna.pmu.cpa.domain.Speaker;
-import com.prodyna.pmu.cpa.ejb.SpeakerService;
-import com.prodyna.pmu.cpa.ejb.entity.SpeakerEntity;
+import com.prodyna.pmu.cpa.ejb.SpeakerServiceBean;
+import com.prodyna.pmu.cpa.ejb.domain.SpeakerEntity;
 
 /**
- * EJB service bean implementation of the {@link SpeakerService} interface.
+ * EJB service bean implementation of the {@link SpeakerServiceBean} interface.
  *
  * @author <a href="mailto:pmueller@prodyna.com">pmueller@prodyna.com</a>
  */
 @Local @Stateless
-public class SpeakerServiceImpl extends AbstractServiceImpl.Listable<Speaker, SpeakerEntity> 
-		implements SpeakerService {
+public class SpeakerServiceImpl extends AbstractServiceBeanImpl.Listable<Speaker, SpeakerEntity> 
+		implements SpeakerServiceBean {
 
 	private SpeakerEntity create(String name, String description) {
 		SpeakerEntity result = new SpeakerEntity();
@@ -65,14 +64,4 @@ public class SpeakerServiceImpl extends AbstractServiceImpl.Listable<Speaker, Sp
   protected Class<SpeakerEntity> getEntityClass() {
 	  return SpeakerEntity.class;
   }
-
-	/**
-	 * {@inheritDoc}
-	 */
-  @Override
-  protected void prepare(UpdateOperations<SpeakerEntity> updateOperations, Speaker object) {
-		updateOperations
-    		.set("name", object.getName())
-    		.set("description", object.getDescription());
-  }	
 }

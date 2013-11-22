@@ -17,7 +17,7 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 import com.google.common.base.Objects;
 import com.google.gwt.user.client.ui.Composite;
 import com.prodyna.pmu.cpa.web.client.ui.ConferenceEditWidget;
-import com.prodyna.pmu.cpa.web.shared.PortableConference;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableConference;
 import com.prodyna.pmu.cpa.web.shared.rest.ConferenceRestService;
 
 /**

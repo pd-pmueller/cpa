@@ -11,12 +11,10 @@
 
 	<modules>
 		<module>cpa-common</module>
-		<module>cpa-ear</module>
 		<module>cpa-ejb</module>
 		<module>cpa-ejb-impl</module>
-		<module>cpa-rest</module>
-		<module>cpa-rest-impl</module>
 		<module>cpa-web</module>
+		<module>cpa-ear</module>
 	</modules>
 
 	<properties>
@@ -26,6 +24,7 @@
 		<version.jboss.maven.plugin>7.3.Final</version.jboss.maven.plugin>
 		<version.jboss.bom>1.0.4.Final</version.jboss.bom>
 		<version.jboss.as>7.1.1.Final</version.jboss.as>
+		<version.shrinkwrap.resolvers>2.0.1</version.shrinkwrap.resolvers>
 
 		<!-- Plugin versions -->
 		<version.compiler.plugin>2.3.2</version.compiler.plugin>
@@ -34,7 +33,7 @@
 		<version.ear.plugin>2.6</version.ear.plugin>
 		<version.ejb.plugin>2.3</version.ejb.plugin>
 		<version.war.plugin>2.1.1</version.war.plugin>
-		<version.surefire.plugin>2.4.3</version.surefire.plugin>
+		<version.surefire.plugin>2.16</version.surefire.plugin>
     
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.6</maven.compiler.target>
@@ -54,29 +53,12 @@
 				<artifactId>cpa-ejb</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			<!--
 			<dependency>
-				<groupId>com.prodyna.pmu.cpa</groupId>
-				<artifactId>cpa-ejb-impl</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.prodyna.pmu.cpa</groupId>
-				<artifactId>cpa-rest</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.prodyna.pmu.cpa</groupId>
-				<artifactId>cpa-rest-impl</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.prodyna.pmu.cpa</groupId>
-				<artifactId>cpa-web</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			-->
-
+	      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+	      <artifactId>shrinkwrap-resolver-bom</artifactId>
+	      <version>${version.shrinkwrap.resolvers}</version>
+	      <scope>import</scope> <type>pom</type>
+	    </dependency>
 			<dependency>
 				<groupId>org.jboss.bom</groupId>
 				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
@@ -84,15 +66,13 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- 
 			<dependency>
-				<groupId>org.jboss.bom</groupId>
-				<artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
-				<version>${version.jboss.bom}</version>
-				<type>pom</type>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.2.Final</version>
 				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
-			-->
 		</dependencies>
 	</dependencyManagement>
 

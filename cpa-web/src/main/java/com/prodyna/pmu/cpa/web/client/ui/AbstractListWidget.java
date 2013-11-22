@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodyna.pmu.cpa.web.client.ClientEntryPoint.ApplicationRuntime;
-import com.prodyna.pmu.cpa.web.shared.PortableObject;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableObject;
 import com.prodyna.pmu.cpa.web.shared.event.AdminModeChange;
 
 /**

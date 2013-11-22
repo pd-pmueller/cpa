@@ -19,8 +19,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.prodyna.pmu.cpa.web.shared.PortableObject;
-import com.prodyna.pmu.cpa.web.shared.PortableTalk;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableObject;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableTalk;
 
 /**
  * Widget for a small list of {@link PortableObject}s.

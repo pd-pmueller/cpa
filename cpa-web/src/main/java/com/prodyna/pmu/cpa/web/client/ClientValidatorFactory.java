@@ -11,10 +11,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.validation.client.AbstractGwtValidatorFactory;
 import com.google.gwt.validation.client.GwtValidation;
 import com.google.gwt.validation.client.impl.AbstractGwtValidator;
-import com.prodyna.pmu.cpa.web.shared.PortableConference;
-import com.prodyna.pmu.cpa.web.shared.PortableRoom;
-import com.prodyna.pmu.cpa.web.shared.PortableSpeaker;
-import com.prodyna.pmu.cpa.web.shared.PortableTalk;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableConference;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableRoom;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableSpeaker;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableTalk;
 
 /**
  * Client {@code ValidatorFactory} for GWT.

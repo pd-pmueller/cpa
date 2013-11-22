@@ -24,7 +24,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.prodyna.pmu.cpa.web.client.ClientEntryPoint.ApplicationRuntime;
-import com.prodyna.pmu.cpa.web.shared.PortableObject;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableObject;
 import com.prodyna.pmu.cpa.web.shared.event.AdminModeChange;
 import com.prodyna.pmu.cpa.web.shared.event.PageChange;
 

@@ -6,7 +6,7 @@ package com.prodyna.pmu.cpa.web.client.ui;
 
 import javax.enterprise.context.Dependent;
 
-import com.prodyna.pmu.cpa.web.shared.PortableRoom;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableRoom;
 
 /**
  * Simple widget to show a {@link PortableRoom} on a list page.

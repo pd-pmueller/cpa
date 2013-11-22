@@ -30,7 +30,7 @@ import com.prodyna.pmu.cpa.web.client.ClientEntryPoint.ApplicationRuntime;
 import com.prodyna.pmu.cpa.web.client.ui.data.DateStringConverter;
 import com.prodyna.pmu.cpa.web.client.ui.page.ConferenceEditPage;
 import com.prodyna.pmu.cpa.web.client.ui.page.PageStates;
-import com.prodyna.pmu.cpa.web.shared.PortableConference;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableConference;
 import com.prodyna.pmu.cpa.web.shared.event.AdminModeChange;
 
 /**

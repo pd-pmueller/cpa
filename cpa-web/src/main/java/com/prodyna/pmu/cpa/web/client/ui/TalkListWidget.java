@@ -6,7 +6,7 @@ package com.prodyna.pmu.cpa.web.client.ui;
 
 import javax.enterprise.context.Dependent;
 
-import com.prodyna.pmu.cpa.web.shared.PortableTalk;
+import com.prodyna.pmu.cpa.web.shared.domain.PortableTalk;
 
 /**
  * Simple widget to show a {@link PortableTalk} on a list page.

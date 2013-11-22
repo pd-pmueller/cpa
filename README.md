@@ -9,9 +9,10 @@ Verwendete Technologien
 3. MongoDB
 4. Morphia
 5. Orika
-6. JAX-RS
-7. GWT
-8. Errai
+6. JSR 303 Bean Validation
+7. JAX-RS
+8. GWT
+9. Errai
 
 Projekte
 ---
@@ -21,3 +22,8 @@ Projekte
 4. cpa-ejb-impl: Implementierung der Enterprise Java Beans und REST Schnittstellen
 5. cpa-web: Errai Web Client und JAX-RS Application
 6. cpa-ear: Packaging-Projekt
+
+TODO
+---
+- Arquillian-Tests
+- Komplettierung des Client
